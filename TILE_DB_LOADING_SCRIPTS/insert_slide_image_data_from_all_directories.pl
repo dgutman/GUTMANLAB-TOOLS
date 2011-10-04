@@ -1,50 +1,166 @@
 #!/usr/bin/perl
 use DBI;
 use DBD::mysql;
-use Time::Local;
-use Time::HiRes qw( gettimeofday tv_interval );
+use File::Basename;
+
+require('/includes/connect_to_sideshowbob_sql.pl'); 
+
 
 &connect_to_mysql_v2();
-system('export FSLDIR=/usr/share/fsl');
-
-$before_time = [gettimeofday];
-$timer = [gettimeofday];
 DBI->trace(0);
 
-@DIRS_TO_PROCESS = glob("*-tile");
+
+### there's also an exclusion list of directories where I just don't want to include it
+
+my %SLIDE_NAME_HASH ;  ### this will store all the file names I have found and keep track of duplicates...
+### Going to scan for all NDPI or SVS files located on my system...
+### Will debate most efficient way to do this.. may likely do this in stages
+### first assume the filename of an image is ALWAYS unique.. and build a hash
+### of current SLIDE_NAMES I have stored...
+### I want to track when things move however... so I think I'll build a hash of
+### all files and their directories as a hash... then if it's not there.. add it to the database
+
+read_slide_metadata_info( "/data2/Images/bcrTCGA/diagnostic_block_HE_section_image/intgen.org_GBM.tissue_images.8.0.0/TCGA-06-0145-01Z-00-DX3.svs");
 
 
 
-$statement = "truncate SERIES_DESCRIPTION ";
+exit;
 
-print "$statement\n";
-$insert_db = $realdbh->prepare($statement);
-$insert_db->execute();
+locate_svs_files( "/data2/Images/bcrTCGA*/", "svs" );
+locate_svs_files( "/data2/Images/*/", "ndpi" );
+	
+
+	
+update_slide_parameters();
 
 
+sub update_slide_parameters()
+{
 
+### this will query the database and determine what slides do not have resolution/voxel size/whaetver data
 
-for($k=0;$k<=$#DIRS_TO_PROCESS;$k++)
+$select_all_data = 0;
+
+if($select_all_data) { $select_statement = "select * from  svs_slide_location_info"; }
+else { $select_statement = "select * from svs_slide_location_info where scanned_resolution != NULL";   }
+
+}
+	
+	
+
+sub locate_svs_files( $BASE_PATH_TO_SCAN, $FILE_EXTENSION_TO_LOOK_FOR )
 	{
-
-print $DIRS_TO_PROCESS[$k] . "\n";
-
-$FILE_PATTERN_ROOT_NAME = $DIRS_TO_PROCESS[$k];
-
-$SOURCE_FILE_NAME = `ls $FILE_PATTERN_ROOT_NAME/\*.svs`;
-print "Source file name is $SOURCE_FILE_NAME ";
-
-chomp($SOURCE_FILE_NAME);
-
-print $FILE_PATTERN_ROOT_NAME  . " is file pattern root name \n"; 
-determine_image_directory_information($FILE_PATTERN_ROOT_NAME);
+	
+	$BASE_PATH_TO_SCAN = $_[0];
+	$FILE_EXTENSION_TO_LOOK_FOR = $_[1];
+	$find_statement = "find $BASE_PATH_TO_SCAN -maxdepth 3 -name '*.$FILE_EXTENSION_TO_LOOK_FOR' ";
+	print $find_statement ."\n";
+	@CURRENT_FILE_LIST = `$find_statement`;
+	
+	print "There were a total of $#CURRENT_FILE_LIST files found ... \n";
+	foreach $WHOLE_SLIDE_FILE ( @CURRENT_FILE_LIST )
+		{
+		chomp($WHOLE_SLIDE_FILE);
+		($file,$dir) = fileparse($WHOLE_SLIDE_FILE);
+		### Just reading in the list of files and slides...
+		#print "$file was in $dir \n";
+		if($SLIDE_NAME_HASH{$file}) {
+								#print "Found a duplicate for $file in $dir\n";
+								} 
+		else{
+			update_or_insert_slide_info($file,$dir,$FILE_EXTENSION_TO_LOOK_FOR);
+			}
+		$SLIDE_NAME_HASH{$file}++;
+		}
+	
 	}
 
 exit;
 
+sub read_slide_metadata_info( $slide_location)
+	{
+	
+	$input_slide = $_[0];
+	
+$base_command = "/drobo/LOCI_TOOLS/loci/showinf -nopix -omexml $input_slide ";
+
+
+print $base_command . "\n";
+
+#@OME_TIFF_OUTPUT = `$base_command`;
+@OME_TIFF_OUTPUT = `cat /home/dgutman/Dropbox/GIT_ROOT/TILE_DB_LOADING_SCRIPTS/doc_to_parse.txt`;
+
+for($i=0;$i<=$#OME_TIFF_OUTPUT;$i++)
+		{
+		
+			if( $OME_TIFF_OUTPUT[$i] =~ m/<Image ID=\"Image:0\" Name=\"Series 1\">/ )
+					{
+#		print $OME_TIFF_OUTPUT[$i]  ;
+		if( $OME_TIFF_OUTPUT[$i+3]  =~ m/<Pixels DimensionOrder=\"(.*)\" ID=\"(.*)\" PhysicalSizeX=\"(.*)\" PhysicalSizeY=\"(.*)\" PhysicalSizeZ=\"(.*)\" SizeC=\"(.*)\" SizeT=\"(.*)\" SizeX=\"(.*)\" SizeY=\"(.*)\" SizeZ=\"(.*)\" Type/)
+			{
+#			print "Found pixel dimensions match... \n";
+			}
+		else
+			{
+#			print "regex failed... \n";
+			}
+		$base_image_width = $8;
+		$base_image_height = $9;
+				
+					}
+		
+			if( $OME_TIFF_OUTPUT[$i] =~ m/<Key>Series 1 AppMag<\/Key>/ )
+				{
+			print "Foudn base magnification \n";
+				$OME_TIFF_OUTPUT[$i+1] =~ m/<Value>(.*)<\/Value>/;
+					$base_magnification = $1;
+						print "Base magnification is $base_magnification";
+				}
+		
+		
+		}
 
 
 
+		print "Image is $base_image_width by $base_image_height and was sacnned at $base_magnification\n";
+
+
+		
+	}
+
+sub		update_or_insert_slide_info($file,$dir)
+	{
+	#This function will do the database inserts/replace for the raw file location.... I am going to try and only have
+	# one entry for a given file.... need to debate how to deal with this
+
+	
+$file = $_[0];
+$dir = $_[1];	
+
+$input_file_escaped = $realdbh->quote($file);
+$input_dir_escaped = $realdbh->quote($dir);
+
+
+$statement = "replace into svs_slide_location_info (source_file_name,root_directory,slide_format) values  " ;
+$statement .= "($input_file_escaped,$input_dir_escaped,'$_[2]') ";
+#,'$_[2]','$_[3]') ";
+#print "$statement  was the statement\n";
+$insert_db = $realdbh->prepare($statement);
+$insert_db->execute(); 
+
+#@GET_SLIDE_INFO `
+#showinf -nopix -omexml-only sourceImageFile > omexml-metadata.xml
+
+if($DBI::errstr or $realdbh::errstr ) {    print "foudn an error $DBI::errstr or $realdbh::errstr \n"; }
+
+		}
+
+
+$statement = "truncate svs_slide_location_info ";
+
+print "$statement\n";
+$insert_db = $realdbh->prepare($statement);
+$insert_db->execute();
 
 
 ### THIS WILL READ ALL THE TILES IN A GIVEN DIRECTORY THAT MATCH MY PATTERN INTO AN ARRAY
@@ -253,238 +369,5 @@ print "Inserted $i images ... \n";
 #`convert  /APERIO_SHARE/TCGA_SLIDES/THUMBNAIL_DEPOT/$THUMBNAIL_NAME.jpg -thumbnail 200 /APERIO_SHARE/TCGA_SLIDES/THUMBNAIL_DEPOT/$THUMBNAIL_NAME-tiny.jpg`;
 
 
-
 exit;
-
-sub get_image_series_reference_id  ($SERIES_TAG, $NUM_OF_TILES )
-{
-print "Was passed $_[0] $_[1] $_[2]  $_[3]\n";
-
-
-$statement = "select series_id_key from SERIES_DESCRIPTION where SERIES_TAG='$_[0]'";
-
-# and map_description='$_[1]' ";
-print "$statement\n";
-$select_db = $realdbh->prepare($statement);
-$select_db->execute();
-
-($series_id_key) = $select_db->fetchrow_array();
-
-
-if($series_id_key eq "" )
-{
-$statement = "insert into SERIES_DESCRIPTION (series_tag,_root,map_description,nifti_image_path,index_text_file_image_path) values  " ;
-$statement .= " ('$_[0]','$_[1]','$_[2]','$_[3]') ";
-print "$statement \n";
-$insert_db = $realdbh->prepare($statement);
-$insert_db->execute();
-}
-else {
-
-$statement = "update atlas_image_info set nifti_image_path='$_[2]',index_text_file_image_path='$_[3]' where analysis_key_root='$_[0]' and map_description='$_[1]' ";
-
-print "$statement\n";
-$insert_db = $realdbh->prepare($statement);
-$insert_db->execute();
-
-	}
-$statement = "select atlas_map_id from atlas_image_info where analysis_key_root='$_[0]' and map_description='$_[1]' ";
-print "$statement\n";
-$select_db = $realdbh->prepare($statement);
-$select_db->execute();
-
-($atlas_map_id) = $select_db->fetchrow_array();
-
-
-
-
-return($atlas_map_id);
-}
-
-
-
-
-
-
-### FIRST THING I NEED TO DO IS GENERATE A SERIES_ID_KEY FOR THIS SET OF IMAGES.. AS WELL AS PERFORM 
-## SOME STATISTICS ON IMAGE SERIES THAT I AM TRYING TO LOAD....
-
-
-
-$IMG_SPACE_ID = $ARGV[0];
-$PROBTRACK_FILE_NAME = $ARGV[1];
-$MASK_VALUE_LIST = $ARGV[2];
-$ROI_DESCRIPT = $ARGV[3];
-
-print "$IMG_SPACE_ID $PROBTRACK_FILE_NAME $ROI_DESCRIPT $MASK_VALUE_LIST\n";
-
-if($#ARGV != 3) { print "Did not pass enough paramaeters \n";}
-
-$seed_id = get_seed_reference_id($IMG_SPACE_ID,$ROI_DESCRIPT,$PROBTRACK_FILE_NAME,$MASK_VALUE_LIST); 
-
-print "$seed_id is the seed id number for above \n";
-
-process_index_file($IMG_SPACE_ID,$MASK_VALUE_LIST,$ROI_DESCRIPT,$seed_id);
-
-##insert_raw_image_data($IMG_SPACE_ID,$PROBTRACK_FILE_NAME,$ROI_DESCRIPT,$seed_id);
-
-exit;
-
-
-
-
-sub process_index_file
-{
-
-
-
-print "Was passed $_[0]; $_[1]; $_[2] $_[3]; \n";
-
-
-$INPUT_FILE= "$_[1]";
-
-if(!open(FP_IN,"<$INPUT_FILE") )
-        {
-        print "Could not open $INPUT_FILE so quitting"; exit;
-        }
-
-print "Input ASCII file is $INPUT_FILE \n";
-exit;
-
-## NEED TO SKIP THE FIRST TWO LINES
-<FP_IN>;
-<FP_IN>;
-
-
-$statement = "delete from atlas_index_and_descr_ids where analysis_key_root='$_[0]' and atlas_map_id='$_[3]'";
-print "$statement\n";
-$select_db = $realdbh->prepare($statement);
-$select_db->execute();
-
-while(<FP_IN>)
-{
-chomp;
-#@COLS=split(/s+/,$_);  
-@COLS=split;
-
-print "$COLS[0];$COLS[1];\n";
-
-
-$COLS[1] =~ s/\.nii\.gz//;
-$statement = "insert into atlas_index_and_descr_ids  (analysis_key_root,region_description,atlas_map_id,region_id) values  " ;
-$statement .= " ('$_[0]','$COLS[1]','$_[3]','$COLS[0]') ";
-#print "$statement \n";
-$insert_db = $realdbh->prepare($statement);
-$insert_db->execute();
-
-
-
-
-}
-
-
-
-
-
-
-}
-
-
-
-
-
-sub get_seed_reference_id  {
-
-print "Was passed $_[0] $_[1] $_[2]  $_[3]\n";
-
-
-$statement = "select atlas_map_id from atlas_image_info where analysis_key_root='$_[0]' and map_description='$_[1]' ";
-print "$statement\n";
-$select_db = $realdbh->prepare($statement);
-$select_db->execute();
-
-($roi_id) = $select_db->fetchrow_array();
-
-if($roi_id eq "" )
-{
-$statement = "insert into atlas_image_info (analysis_key_root,map_description,nifti_image_path,index_text_file_image_path) values  " ;
-$statement .= " ('$_[0]','$_[1]','$_[2]','$_[3]') ";
-print "$statement \n";
-$insert_db = $realdbh->prepare($statement);
-$insert_db->execute();
-}
-else {
-
-$statement = "update atlas_image_info set nifti_image_path='$_[2]',index_text_file_image_path='$_[3]' where analysis_key_root='$_[0]' and map_description='$_[1]' ";
-
-print "$statement\n";
-$insert_db = $realdbh->prepare($statement);
-$insert_db->execute();
-
-	}
-
-
-$statement = "select atlas_map_id from atlas_image_info where analysis_key_root='$_[0]' and map_description='$_[1]' ";
-print "$statement\n";
-$select_db = $realdbh->prepare($statement);
-$select_db->execute();
-
-($atlas_map_id) = $select_db->fetchrow_array();
-
-
-
-
-return($atlas_map_id);
-}
-
-
-
-
-
-sub connect_to_mysql_v2
-{
-#$ENV{'PATH'} = "/usr/local/mysql/bin";
-
-my $dbhost = 'bumblebee.psychiatry.emory.edu';
-my $sqldbuser = 'root';
-my $sqldbpass = 'dti4ever';
-my $dbname='IMAGE_BROWSER';
-
-
-    $realdbh =
-DBI->connect("dbi:mysql:database=$dbname;host=$dbhost",
-"$sqldbuser", "$sqldbpass");
-    if ($DBI::errstr) {
-        if ($DBI::err == 1034) {
-            print "The Mysql database is currently down.\n";
-        }
-        else {
-            print "Unable to connect: $DBI::errstr\n";
-        }
-        exit;
-    }
-}
-
-
-
-sub create_directory_structure
-{
-$DIR_STRUC_TO_CREATE = $_[0];
-
-@PATH_LIST = split(/\//,$DIR_STRUC_TO_CREATE);
-
-$START_PATH = "/";
-
-for($beta=0;$beta<=$#PATH_LIST;$beta++)
-        {
-$START_PATH .=  $PATH_LIST[$beta] . "/";
-
-if( !( -d $START_PATH) )
-                {
-        print "Creating output path for $START_PATH\n";
-
-                `mkdir $START_PATH`;
-                }
-        }
-}
 
