@@ -5,13 +5,14 @@ use File::Basename;
 
 require('/includes/connect_to_sideshowbob_sql.pl'); 
 
-
 &connect_to_mysql_v2();
 DBI->trace(0);
 
 
-### there's also an exclusion list of directories where I just don't want to include it
+### USE BELOW WITH CAUTION-- TRUNCATES INPUT TABLE!!
+#wipe_slide_database();
 
+### there's also an exclusion list of directories where I just don't want to include it
 my %SLIDE_NAME_HASH ;  ### this will store all the file names I have found and keep track of duplicates...
 ### Going to scan for all NDPI or SVS files located on my system...
 ### Will debate most efficient way to do this.. may likely do this in stages
@@ -20,35 +21,128 @@ my %SLIDE_NAME_HASH ;  ### this will store all the file names I have found and k
 ### I want to track when things move however... so I think I'll build a hash of
 ### all files and their directories as a hash... then if it's not there.. add it to the database
 
-read_slide_metadata_info( "/data2/Images/bcrTCGA/diagnostic_block_HE_section_image/intgen.org_GBM.tissue_images.8.0.0/TCGA-06-0145-01Z-00-DX3.svs");
+#locate_wholeslide_files( "/data2/Images/bcrTCGA*/", "svs" );
+#locate_wholeslide_files( "/data2/Images/*/", "ndpi" );
+
+#update_slide_parameters();
+
+#check_for_or_generate_thumbnail(  "/IMAGING_SCRATCH/THUMBNAIL_DEPOT/" );
+
+update_tile_location_cache();
 
 
+sub locate_tile_location_caches( $location_to_scan )
+	{
+### this function will search a directory and look for tiles and then associate them with the appropriate patient/whole slide image
+### of note there are currently LOTS of tiled images as various resolutions
+	$location_to_scan = $_[0];
+
+
+	}
 
 exit;
 
-locate_svs_files( "/data2/Images/bcrTCGA*/", "svs" );
-locate_svs_files( "/data2/Images/*/", "ndpi" );
-	
+sub check_for_or_generate_thumbnail( $base_directory_path_to_scan_for_thumbs)
+	{
+## this will receive the WEBROOT_LOCATION and then look within that hierachy for a thumbnail image....
+### for now since I haven't organized everything I will use the find command with the -tiny.jpg extension in several
+### root locations
 
+$base_search_path = $_[0];
+
+@thumbnail_depot_list = `find $base_search_path -name '*-thumbnail.png'`;
+#@thumbnail_depot_list = `find $base_search_path -name '*-thumbnail-tiny*'`;
+
+my %THUMBNAIL_LOCATION_HASH;
+
+
+foreach $potential_thumb_name ( @thumbnail_depot_list )
+	{
+	chomp($potential_thumb_name);
+	($file,$dir) = fileparse($potential_thumb_name);
+	$THUMBNAIL_LOCATION_HASH{$file} = $potential_thumb_name;
+	print "$file , $dir \n";
+	}
+
+
+$select_all_data = 0;
+if($select_all_data) { $select_statement = "select SOURCE_FILE_NAME,ROOT_DIRECTORY,source_file_name_base from  svs_slide_location_info "; }
+else { $select_statement = "select SOURCE_FILE_NAME, ROOT_DIRECTORY,source_file_name_base from svs_slide_location_info where webroot_image_small IS NULL ";   }
+
+print $select_statement ."\n";
+$select_db = $realdbh->prepare($select_statement);
+$select_db->execute(); 
+
+while( @SLIDE_INFORMATION = $select_db->fetchrow_array() )
+	{
+	print $SLIDE_INFORMATION[0] . ";" . $SLIDE_INFORMATION[1] .  ";". $SLIDE_INFORMATION[2] . "\n";
+	$slide_path = $SLIDE_INFORMATION[1] . $SLIDE_INFORMATION[0];	
+#	read_slide_metadata_info( $slide_path,$SLIDE_INFORMATION[0]);
+	$predicted_thumbnail_name = $SLIDE_INFORMATION[2] . "-thumbnail.png";
+## I should be generating thumbnails in a consistent pattern based on taking the "fixed" base slide name
+# where I remove any spaces or special characters and then use either a windows based tiler that lee wrote
+# or the aperio tiffsplit program to find the appropriately sized layer and extract that from the tiff
+
+#	print "looking for $predicted_thumbnail_name\n";
+	if( $THUMBNAIL_LOCATION_HASH{$predicted_thumbnail_name} ) { 
+		
+
+#	print "Found $predicted_thumbnail_name in" . $THUMBNAIL_LOCATION_HASH{$predicted_thumbnail_name}; 
 	
-update_slide_parameters();
+				$slide_location_with_base_path_removed = $THUMBNAIL_LOCATION_HASH{$predicted_thumbnail_name};
+				$slide_location_with_base_path_removed =~ s/$base_search_path//;
+	$webroot_image_large = $slide_location_with_base_path_removed;
+	$webroot_image_small = $webroot_image_large;
+	$webroot_image_small =~ s/-thumbnail.png$/-thumbnail-tiny.png/;
+				$statement = "update svs_slide_location_info set webroot_image_large='$webroot_image_large',webroot_image_small='$webroot_image_small', webroot_filesystem_base='$base_search_path' ";
+				$statement .= "where source_file_name='${SLIDE_INFORMATION[0]}'";
+	#			print $statement . "\n";
+
+				$insert_db = $realdbh->prepare($statement);
+				$insert_db->execute(); 
+			if($DBI::errstr or $realdbh::errstr ) {    print "found an error $DBI::errstr or $realdbh::errstr \n"; }
+
+
+					
+					}
+	else	
+		{
+
+		print "Did not find thumbnail image for ${SLIDE_INFORMATION[0]} \n";
+
+		}
+
+	}
+
+
+	}
 
 
 sub update_slide_parameters()
 {
-
 ### this will query the database and determine what slides do not have resolution/voxel size/whaetver data
 
-$select_all_data = 0;
+$select_all_data = 1;
 
-if($select_all_data) { $select_statement = "select * from  svs_slide_location_info"; }
-else { $select_statement = "select * from svs_slide_location_info where scanned_resolution != NULL";   }
+if($select_all_data) { $select_statement = "select SOURCE_FILE_NAME,ROOT_DIRECTORY from  svs_slide_location_info  where slide_format='ndpi' "; }
+else { $select_statement = "select SOURCE_FILE_NAME, ROOT_DIRECTORY from svs_slide_location_info where scanned_resolution IS NULL and slide_format='ndpi' limit 500";   }
+
+print $select_statement ."\n";
+
+$select_db = $realdbh->prepare($select_statement);
+$select_db->execute(); 
+
+while( @SLIDE_INFORMATION = $select_db->fetchrow_array() )
+	{
+	print $SLIDE_INFORMATION[0] . ";" . $SLIDE_INFORMATION[1] . "\n";
+	$slide_path = $SLIDE_INFORMATION[1] . $SLIDE_INFORMATION[0];	
+	read_slide_metadata_info( $slide_path,$SLIDE_INFORMATION[0]);
+	}
 
 }
-	
-	
 
-sub locate_svs_files( $BASE_PATH_TO_SCAN, $FILE_EXTENSION_TO_LOOK_FOR )
+
+sub locate_wholeslide_files( $BASE_PATH_TO_SCAN, $FILE_EXTENSION_TO_LOOK_FOR )
 	{
 	
 	$BASE_PATH_TO_SCAN = $_[0];
@@ -76,26 +170,25 @@ sub locate_svs_files( $BASE_PATH_TO_SCAN, $FILE_EXTENSION_TO_LOOK_FOR )
 	}
 
 exit;
-
-sub read_slide_metadata_info( $slide_location)
+sub read_slide_metadata_info( $slide_location, $slide_name)
 	{
 	
-	$input_slide = $_[0];
+	$input_slide_with_path = $_[0];
+	$slide_name = $realdbh->quote($_[1]);
 	
-$base_command = "/drobo/LOCI_TOOLS/loci/showinf -nopix -omexml $input_slide ";
+#$base_command = "/drobo/LOCI_TOOLS/loci/showinf -nopix -omexml '$input_slide_with_path' ";
+$base_command = "/drobo/LOCI_TOOLS/loci/showinf -nopix '$input_slide_with_path' ";
 
 
 print $base_command . "\n";
+@OME_TIFF_OUTPUT = `$base_command`;
 
-#@OME_TIFF_OUTPUT = `$base_command`;
-@OME_TIFF_OUTPUT = `cat /home/dgutman/Dropbox/GIT_ROOT/TILE_DB_LOADING_SCRIPTS/doc_to_parse.txt`;
 
 for($i=0;$i<=$#OME_TIFF_OUTPUT;$i++)
 		{
 		
 			if( $OME_TIFF_OUTPUT[$i] =~ m/<Image ID=\"Image:0\" Name=\"Series 1\">/ )
 					{
-#		print $OME_TIFF_OUTPUT[$i]  ;
 		if( $OME_TIFF_OUTPUT[$i+3]  =~ m/<Pixels DimensionOrder=\"(.*)\" ID=\"(.*)\" PhysicalSizeX=\"(.*)\" PhysicalSizeY=\"(.*)\" PhysicalSizeZ=\"(.*)\" SizeC=\"(.*)\" SizeT=\"(.*)\" SizeX=\"(.*)\" SizeY=\"(.*)\" SizeZ=\"(.*)\" Type/)
 			{
 #			print "Found pixel dimensions match... \n";
@@ -106,7 +199,7 @@ for($i=0;$i<=$#OME_TIFF_OUTPUT;$i++)
 			}
 		$base_image_width = $8;
 		$base_image_height = $9;
-				
+	
 					}
 		
 			if( $OME_TIFF_OUTPUT[$i] =~ m/<Key>Series 1 AppMag<\/Key>/ )
@@ -116,19 +209,51 @@ for($i=0;$i<=$#OME_TIFF_OUTPUT;$i++)
 					$base_magnification = $1;
 						print "Base magnification is $base_magnification";
 				}
+		## the above code only really works if I populate the omexml model.. for NDPI will try a different method
+		if($OME_TIFF_OUTPUT[$i] =~ m/^ImageLength: (\d+)/) { $base_image_height = $1; }
+		if($OME_TIFF_OUTPUT[$i] =~ m/^ImageWidth: (\d+)/)  { $base_image_width = $1; }
+		if($OME_TIFF_OUTPUT[$i] =~ m/^XResolution: (\d+)/) { $x_resolution = $1; }
+		if($OME_TIFF_OUTPUT[$i] =~ m/^YResolution: (\d+)/) { $y_resolution = $1; }
 		
+## for ndpi files..		
+#Reading global metadata
+#BitsPerSample: 8
+#Compression: JPEG
+#DateTime: 2011:08:19 17:17:16
+#ImageLength: 76544
+#ImageWidth: 83328
+#Instrument Make: Hamamatsu
+#Instrument Model: C9600-12
+#MetaDataPhotometricInterpretation: RGB
+#NumberOfChannels: 3
+#PhotometricInterpretation: YCbCr
+#ReferenceBlackWhite: 0
+#ResolutionUnit: Centimeter
+#SamplesPerPixel: 3
+#Software: NDP.scan 2.3.11
+#XResolution: 44137
+#YCbCrSubSampling: chroma image dimensions = luma image dimensions
+#YResolution: 43950
+	
 		
 		}
-
+	
 
 
 		print "Image is $base_image_width by $base_image_height and was sacnned at $base_magnification\n";
+	  print "and the x and y resolution were $x_resolution and $y_resolution ";
+	if(  ($base_image_width / $x_resolution)  > 1.9 ) { $base_magnification=40;} else { $base_magnification=20;}
+	  ### this is a shim... but basically if there's twice as many pixels as there is resolution it must have been a 40x scan..?
+	  
+$statement = "update svs_slide_location_info set scanned_resolution='$base_magnification',orig_image_width='$base_image_width', ";
+$statement .= "orig_image_height=$base_image_height where source_file_name=$slide_name";
+print $statement . "\n";
 
-
-		
+$insert_db = $realdbh->prepare($statement);
+$insert_db->execute(); 
 	}
 
-sub		update_or_insert_slide_info($file,$dir)
+sub		update_or_insert_slide_info($file,$dir,$slide_format)
 	{
 	#This function will do the database inserts/replace for the raw file location.... I am going to try and only have
 	# one entry for a given file.... need to debate how to deal with this
@@ -136,32 +261,60 @@ sub		update_or_insert_slide_info($file,$dir)
 	
 $file = $_[0];
 $dir = $_[1];	
-
+$slide_format = $_[2];  ### SVS or NDPI basically
 $input_file_escaped = $realdbh->quote($file);
 $input_dir_escaped = $realdbh->quote($dir);
 
 
-$statement = "replace into svs_slide_location_info (source_file_name,root_directory,slide_format) values  " ;
-$statement .= "($input_file_escaped,$input_dir_escaped,'$_[2]') ";
-#,'$_[2]','$_[3]') ";
-#print "$statement  was the statement\n";
+####			update_or_insert_slide_info($file,$dir,$FILE_EXTENSION_TO_LOOK_FOR);
+
+
+
+###	parse_tiff_header_info_and_get_layer( $slide_path);
+
+### so for SVS files... I can directly get the image size and resolution using the TIFFINFO command..
+ $filesize = -s "$dir$file";
+	$filename_no_ext = $file;
+	$filename_no_ext =~ s/\.ndpi|\.svs//;
+	$filename_no_ext = $realdbh->quote($filename_no_ext);
+print "Filename with no extension is now $filename_no_ext ... \n";	
+
+
+if($slide_format eq "svs")
+	{
+$svs_header_info=  parse_tiff_header_info_and_get_svs_info( "$dir$file");
+
+### will also get the file size of the current file...
+
+($image_width,$image_height,$skip,$appmag) = split(/;/,$svs_header_info);
+	
+	
+$statement = "replace into svs_slide_location_info (source_file_name,root_directory,slide_format,ORIG_IMAGE_WIDTH,ORIG_IMAGE_HEIGHT,scanned_resolution,filesize,source_file_name_base) values  " ;
+$statement .= "($input_file_escaped,$input_dir_escaped,'$slide_format',$image_width,$image_height,$appmag,$filesize,$filename_no_ext) ";
 $insert_db = $realdbh->prepare($statement);
 $insert_db->execute(); 
+#print $statement . "\n";
+	}
+	else
+	{
 
-#@GET_SLIDE_INFO `
-#showinf -nopix -omexml-only sourceImageFile > omexml-metadata.xml
+$statement = "replace into svs_slide_location_info (source_file_name,root_directory,slide_format,filesize,source_file_name_base) values  " ;
+$statement .= "($input_file_escaped,$input_dir_escaped,'$_[2]',$filesize,$filename_no_ext) ";
+$insert_db = $realdbh->prepare($statement);
+$insert_db->execute(); 
+	}
 
-if($DBI::errstr or $realdbh::errstr ) {    print "foudn an error $DBI::errstr or $realdbh::errstr \n"; }
+if($DBI::errstr or $realdbh::errstr ) {    print "found an error $DBI::errstr or $realdbh::errstr \n"; }
+}
 
-		}
 
-
+sub wipe_slide_database()
+	{
 $statement = "truncate svs_slide_location_info ";
-
 print "$statement\n";
 $insert_db = $realdbh->prepare($statement);
 $insert_db->execute();
-
+	}
 
 ### THIS WILL READ ALL THE TILES IN A GIVEN DIRECTORY THAT MATCH MY PATTERN INTO AN ARRAY
 sub determine_image_directory_information($FILE_PATTERN_ROOT)
@@ -189,12 +342,9 @@ chomp($IMAGE_TILE_SIZE);
 
 $DEBUG = 0;
 
-
 	for($i=0;$i<=$#IMAGE_TILES;$i++)
 	{
 	#print $IMAGE_TILES[$i] . "\n";
-
-
 
 if($DEBUG) {
 	$image_size = `identify -format "%wx%h" $IMAGE_TILES[$i]`;
@@ -357,17 +507,38 @@ print "Inserted $i images ... \n";
 	}
 
 
+	
+	
+	
 
+sub parse_tiff_header_info_and_get_svs_info( $SVS_FILE_NAME )
+{
 
-#print "Genertaing thumbnail image for $SVS_FILES_TO_PARSE  \n";
-#$statement ="/APERIO_SHARE/DAG_SCRIPTS/extractLayer $SVS_FILE_TO_PARSE   /APERIO_SHARE/TCGA_SLIDES/THUMBNAIL_DEPOT/$THUMBNAIL_NAME-thumbnail 1 \n";
+$SVS_FILE_NAME = $_[0];
+#print "$SVS_FILE_NAME was passed... \n";
+@TIFF_DATA = `tiffinfo $SVS_FILE_NAME`;
 
-#`$statement`;
-#`convert /APERIO_SHARE/TCGA_SLIDES/THUMBNAIL_DEPOT/$THUMBNAIL_NAME-thumbnail.ppm /APERIO_SHARE/TCGA_SLIDES/THUMBNAIL_DEPOT/$THUMBNAIL_NAME.jpg`;
-#`rm /APERIO_SHARE/TCGA_SLIDES/THUMBNAIL_DEPOT/$THUMBNAIL_NAME-thumbnail.ppm`;
+$image_width="";
+$image_height="";
 
-#`convert  /APERIO_SHARE/TCGA_SLIDES/THUMBNAIL_DEPOT/$THUMBNAIL_NAME.jpg -thumbnail 200 /APERIO_SHARE/TCGA_SLIDES/THUMBNAIL_DEPOT/$THUMBNAIL_NAME-tiny.jpg`;
+$current_layer =0;
+for($k=0;$k<=$#TIFF_DATA;$k++)
+       {
+chomp($TIFF_DATA[$k]);
+#print $TIFF_DATA[$k] . "\n";
+$line_copy = $TIFF_DATA[$k];
 
+## probably other ways to do this.. this means  image width ahsn't been foudn yet
+if( $line_copy =~ m/Image Width:\s(\d+) Image Length:\s(\d+)(.*)/ && $image_width eq "" )
+        {
+#        print "Image resolution is $1 x $2;$1;$2;$current_layer;\n";
+			$image_width = $1;
+			$image_height = $2;
+			$current_layer++;      
+			}
+	if( $line_copy =~ m/AppMag = (\d+)\|/  ) 	{ 	$app_mag = $1; 	}
+		
+}
 
-exit;
-
+return("$image_width;$image_height;appmag;$app_mag");
+}

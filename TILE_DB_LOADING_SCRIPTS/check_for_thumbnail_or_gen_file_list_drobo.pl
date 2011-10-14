@@ -8,12 +8,6 @@ require 'dg_helper_functions_for_thumbnails_drobo.pl';
 &connect_to_mysql_v2();
 
 
-#$statement = "delete from SLIDE_TILE_AND_THUMBNAIL_INFO ";
-#print $statement. "\n";
-
-#$insert_db = $realdbh->prepare($statement); 
-#$insert_db->execute();
-
 
 
 
