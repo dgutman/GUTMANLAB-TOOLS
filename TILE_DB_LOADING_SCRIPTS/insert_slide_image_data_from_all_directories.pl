@@ -24,11 +24,18 @@ my %SLIDE_NAME_HASH ;  ### this will store all the file names I have found and k
 #locate_wholeslide_files( "/data2/Images/bcrTCGA*/", "svs" );
 #locate_wholeslide_files( "/data2/Images/*/", "ndpi" );
 
-#update_slide_parameters();
 
-#check_for_or_generate_thumbnail(  "/IMAGING_SCRATCH/THUMBNAIL_DEPOT/" );
+   update_or_insert_slide_metadata();
 
-update_tile_location_cache();
+exit;
+
+
+
+update_slide_parameters();
+
+check_for_or_generate_thumbnail(  "/IMAGING_SCRATCH/THUMBNAIL_DEPOT/" );
+
+#update_tile_location_cache();
 
 
 sub locate_tile_location_caches( $location_to_scan )
@@ -36,8 +43,6 @@ sub locate_tile_location_caches( $location_to_scan )
 ### this function will search a directory and look for tiles and then associate them with the appropriate patient/whole slide image
 ### of note there are currently LOTS of tiled images as various resolutions
 	$location_to_scan = $_[0];
-
-
 	}
 
 exit;
@@ -122,7 +127,8 @@ sub update_slide_parameters()
 {
 ### this will query the database and determine what slides do not have resolution/voxel size/whaetver data
 
-$select_all_data = 1;
+$select_all_data = 0;
+
 
 if($select_all_data) { $select_statement = "select SOURCE_FILE_NAME,ROOT_DIRECTORY from  svs_slide_location_info  where slide_format='ndpi' "; }
 else { $select_statement = "select SOURCE_FILE_NAME, ROOT_DIRECTORY from svs_slide_location_info where scanned_resolution IS NULL and slide_format='ndpi' limit 500";   }
@@ -138,6 +144,8 @@ while( @SLIDE_INFORMATION = $select_db->fetchrow_array() )
 	$slide_path = $SLIDE_INFORMATION[1] . $SLIDE_INFORMATION[0];	
 	read_slide_metadata_info( $slide_path,$SLIDE_INFORMATION[0]);
 	}
+
+
 
 }
 
@@ -253,6 +261,8 @@ $insert_db = $realdbh->prepare($statement);
 $insert_db->execute(); 
 	}
 
+
+
 sub		update_or_insert_slide_info($file,$dir,$slide_format)
 	{
 	#This function will do the database inserts/replace for the raw file location.... I am going to try and only have
@@ -264,7 +274,6 @@ $dir = $_[1];
 $slide_format = $_[2];  ### SVS or NDPI basically
 $input_file_escaped = $realdbh->quote($file);
 $input_dir_escaped = $realdbh->quote($dir);
-
 
 ####			update_or_insert_slide_info($file,$dir,$FILE_EXTENSION_TO_LOOK_FOR);
 
@@ -315,6 +324,78 @@ print "$statement\n";
 $insert_db = $realdbh->prepare($statement);
 $insert_db->execute();
 	}
+
+
+
+sub		update_or_insert_slide_metadata($file,$dir,$slide_format)
+	{
+	#This function will do the database inserts/replace for the raw file location.... I am going to try and only have
+	# one entry for a given file.... need to debate how to deal with this
+
+	
+
+
+$select_all_data = 0;
+
+
+#if($select_all_data) { $select_statement = "select SOURCE_FILE_NAME,ROOT_DIRECTORY from  svs_slide_location_info  where slide_form$
+#else { $select_statement = "select SOURCE_FILE_NAME, ROOT_DIRECTORY from svs_slide_location_info where patient_id IS NULL";}
+
+
+ $select_statement = "select SOURCE_FILE_NAME, ROOT_DIRECTORY from svs_slide_location_info where patient_id IS NULL";
+
+print $select_statement ."\n"; 
+
+$select_db = $realdbh->prepare($select_statement);
+$select_db->execute();
+
+while( @SLIDE_INFORMATION = $select_db->fetchrow_array() )
+        {
+        print $SLIDE_INFORMATION[0] . ";" . $SLIDE_INFORMATION[1] . "\n";
+        $slide_path = $SLIDE_INFORMATION[1] . $SLIDE_INFORMATION[0];
+
+$file = $SLIDE_INFORMATION[0];
+$dir = $SLIDE_INFORMATION[1];	
+$input_file_escaped = $realdbh->quote($file);
+$input_dir_escaped = $realdbh->quote($dir);
+
+print "file is $file \n";
+                if($file =~ m/TCGA-(\d\d)-(\d\d\d\d)/ ) { $patient_id = "TCGA-$1-$2";}
+                elsif( $file =~ m/HF(\d\d\d\d)/ ) { $patient_id = "HF$1";}
+                else { print "Patient id was not found\n"; next;}
+                                print "Found patient id is $patient_id \n";
+
+if( $dir =~ m/\/data2\/Images\/(.*)\/slide_images\/(.*)/)
+	{
+	$datagroup = $1;
+	$batch_id = $2;
+
+	}
+
+
+$statement = "replace into svs_slide_location_info (source_file_name,root_directory,patient_id,primary_datagroup,batch_id) values  " ;
+$statement .= "($input_file_escaped,$input_dir_escaped,'$patient_id','$datagroup','$batch_id') ";
+$insert_db = $realdbh->prepare($statement);
+$insert_db->execute(); 
+print $statement . "\n";
+if($DBI::errstr or $realdbh::errstr ) {    print "found an error $DBI::errstr or $realdbh::errstr \n"; exit;}
+        }
+
+
+
+	
+
+
+}
+
+
+
+
+
+
+
+
+
 
 ### THIS WILL READ ALL THE TILES IN A GIVEN DIRECTORY THAT MATCH MY PATTERN INTO AN ARRAY
 sub determine_image_directory_information($FILE_PATTERN_ROOT)
