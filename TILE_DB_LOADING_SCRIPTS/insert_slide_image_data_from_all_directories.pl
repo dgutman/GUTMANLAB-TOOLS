@@ -23,15 +23,15 @@ my %SLIDE_NAME_HASH ;  ### this will store all the file names I have found and k
 
 #locate_wholeslide_files( "/data2/Images/bcrTCGA*/", "svs" );
 #locate_wholeslide_files( "/data2/Images/*/", "ndpi" );
+update_slide_parameters();
 
 
-   update_or_insert_slide_metadata();
+#   update_or_insert_slide_metadata();
 
 exit;
 
 
 
-update_slide_parameters();
 
 check_for_or_generate_thumbnail(  "/IMAGING_SCRATCH/THUMBNAIL_DEPOT/" );
 

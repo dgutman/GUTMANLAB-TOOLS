@@ -18,13 +18,11 @@ my %Y_HASH;
 $MAX_X_VALUE= 0;
 $MAX_Y_VALUE = 0;
 
-$TILE_SIZE = 1024;
+$TILE_SIZE = 2048;
 
 $IMAGE_OUTPUT_DIRECTORY = "/IMAGING_SCRATCH/ADRC/PYRAMIDS/ADRC/TO_CONVERT";
 
-
-#$blank_tile = "/drobo/TCGA_IMAGE_MIRROR/NUCLEAR_MORPH_JUN/NUCLEI_BURNED_IN/RS01/" . "blank4096.tiff" ;
-$blank_tile = "/home/dgutman/Dropbox/GIT_ROOT/TILE_DB_LOADING_SCRIPTS/" . "blank1024x1024.tif";
+$blank_tile = "/home/dgutman/Dropbox/GIT_ROOT/TILE_DB_LOADING_SCRIPTS/" . "blank${TILE_SIZE}x${TILE_SIZE}.tif";
 
 
 
@@ -88,7 +86,7 @@ for($x=0;$x<=$MAX_X_VALUE;$x+=$TILE_SIZE)
 
 
 		$current_jpg_file = sprintf "%s.ndpi-%010d-%010d.tif", $TILE_ROOT,$x,$y,$img_extension_type;
-		print "This jpg... does it exist?  $current_jpg_file .. \n";
+#		print "This jpg... does it exist?  $current_jpg_file .. \n";
 		if( -e $current_jpg_file ) {
 				$statement .= $current_jpg_file ." ";
 #				 print "found it... \n"; 

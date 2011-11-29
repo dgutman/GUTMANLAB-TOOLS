@@ -2,12 +2,8 @@
 
 setlocale(LC_ALL, 'en_US.UTF8'); # or any other locale that can handle multibyte characters.
 /* DO MYSQL CONNECTION */        
+require_once('/includes/cerebro_tcgadb_login_info.php');
 
-
-$link = mysql_connect('localhost', 'root', 'r121919nx!');
-if (!$link) {     die('Could not connect: ' . mysql_error());}
-echo "Connected successfully \n";
-mysql_select_db('tile_thumb_datastore', $link) or die('Could not select database.');
 
 $statement = "find  /data2/TCGA_MIRROR/tcga-data.nci.nih.gov/tcgafiles/ftp_auth/distro_ftpusers/anonymous/tumor/ -name 'clinical_*.txt'";
 #echo $statement;
@@ -22,13 +18,11 @@ foreach ( $output_from_find as $current_slide_file )
 	{
 	echo $current_slide_file  . "\n";
 
-
 $working_database_name = determine_csv_header_and_create_db_if_not_exist($current_slide_file);
 echo "Should be loading/updating $working_database_name \n";
-# load_csv_into_sql( $FILE_TO_LOAD[$i] , $working_database_name);
+ load_csv_into_sql( $current_slide_file , $working_database_name);
 #function determine_csv_header_and_create_db_if_not_exist( $current_database_file_name )
 # optimize_data_table ( $working_database_name );
-
 	}	
 /* NOW ITERATE THROUGH FILES I WANT TO LOAD AND/OR CREATE DATABASES FOR */
 
@@ -83,6 +77,12 @@ echo $sql;
 $result = mysql_query($sql);
 echo $result;
 echo mysql_error();
+
+$index_add = "ALTER TABLE   `' . $cur_table_name . '` add INDEX (  `bcr_sample_barcode_col0` ) ";
+$result = mysql_query($index_add);
+echo $result;
+echo mysql_error();
+
 fclose($handle);
 	}
 
@@ -120,20 +120,19 @@ function load_csv_into_sql( $csv_file_name , $database_name)
 
 echo "Should be trying to parse" . $csv_file_name . "\n\n\n";
 
+$truncate_sql = "truncate table `$database_name`";
+$result = mysql_query($truncate_sql);
 
 $content = file($csv_file_name);
 echo $content[0];
 
-$sql = "LOAD DATA LOCAL INFILE '$csv_file_name' INTO TABLE `$database_name` FIELDS TERMINATED BY '\\t' LINES TERMINATED BY '\\n'";
+$sql = "LOAD DATA LOCAL INFILE '$csv_file_name' INTO TABLE `$database_name` FIELDS TERMINATED BY '\\t' LINES TERMINATED BY '\\n' ignore 1 lines";
 #$sql = "LOAD DATA LOCAL INFILE '$csv_file_name' INTO TABLE `$database_name` FIELDS TERMINATED BY ',' LINES TERMINATED BY '\\n'";
-#$sql = "LOAD DATA LOCAL INFILE '$csv_file_name' INTO TABLE `$database_name` FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\\n'";
+#$sql = "LOAD DATA LOCAL INFILE '$csv_file_name' INTO TABLE `$database_name` FIELDS TERMINATED BY ',' ENCLOSED BY '\"' LINES TERMINATED BY '\\n' skip 1 lines";
 echo $sql;
 $result = mysql_query($sql);
 
 echo $result;
 echo mysql_error();
 	}
-
-
-?>
 

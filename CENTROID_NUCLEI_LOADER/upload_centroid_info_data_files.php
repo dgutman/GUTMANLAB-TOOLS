@@ -4,7 +4,7 @@ setlocale(LC_ALL, 'en_US.UTF8'); # or any other locale that can handle multibyte
 /* DO MYSQL CONNECTION */        
 
 
-$link = mysql_connect('localhost', 'centroid_viewer', 'cancersuckz!');
+$link = mysql_connect('cerebro.cci.emory.edu', 'centroid_viewer', 'cancersuckz!');
 if (!$link) {
     die('Could not connect: ' . mysql_error());
 }
@@ -13,6 +13,9 @@ echo "Connected successfully \n";
 
 mysql_select_db('centroid_nuclei_db', $link) or die('Could not select database.');
 
+$sql = "truncate table features_list";
+echo $sql;
+$result = mysql_query($sql);
 
 foreach( glob("*.mat.txt") as $filename) {
 	echo "$filename size " . filesize($filename) . "\n";
