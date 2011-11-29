@@ -1,2 +1,5 @@
 *.features.mat.txt
 *.tar.gz
+*.zip
+*.dx
+*.scene
