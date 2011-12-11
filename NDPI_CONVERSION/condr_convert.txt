@@ -1,0 +1,82 @@
+W:\Images\CONDR-WashU\Reviewed\
+tile "W:\Images\CONDR-WashU\Reviewed\S001 MAH-C.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S001_MAH-C 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S003 CLB AFS1.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S003_CLB AFS1 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S003 CLB-C.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S003_CLB-C 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S008 EJR-A.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S008_EJR-A 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S010 CJJ-A.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S010_CJJ-A 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S003 CLB AFS2.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S003_CLB AFS2 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S003 CLB BFS2.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S003_CLB BFS2 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S003 CLB-B.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S003_CLB-B 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S010 CJJ-C.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S010_CJJ-C 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W023 CONDR1.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W023_CONDR1 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W023 CONDR3.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W023_CONDR3 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W001-A2.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W001-A2 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W001-A3.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W001-A3 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W008 H&E.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W008_H-E 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W029 CONDR2.C.110615.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W029_CONDR2.C.110615 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W029 CONDR3.D.110615.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W029_CONDR3.D.110615 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\CONDR1 W001.C1.100113.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\CONDR1_W001.C1.100113 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\CONDR1 W027.B1.110414.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\CONDR1_W027.B1.110414 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\CONDR3 W027.D1.110414.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\CONDR3_W027.D1.110414 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S001 MAH-B.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S001_MAH-B 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W020 B1.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W020_B1 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W020 C1.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W020_C1 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W001 D1.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W001_D1 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W001 A1.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W001_A1 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W020 E1.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W020_E1 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W020 F1.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W020_F1 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W020 G1.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W020_G1 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W001 B2.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W001_B2 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W001 B1.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W001_B1 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W001 A4.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W001_A4 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\CONDR2 W027.C1.110414.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\CONDR2_W027.C1.110414 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W023 CONDR4.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W023_CONDR4 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W024-B1-1-110218.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W024-B1-1-110218 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W024-C1-1-110218.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W024-C1-1-110218 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W024-D1-1-110218.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W024-D1-1-110218 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W024-E1-1-110218.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W024-E1-1-110218 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W024-G1-1-110218.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W024-G1-1-110218 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S007.A.100407.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S007.A.100407 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S017.A1.101014.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S017.A1.101014 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S019.D1.1.101102.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S019.D1.1.101102 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S019.D2.1.101102.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S019.D2.1.101102 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S019.D3.1.101102.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S019.D3.1.101102 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S022.A1.110303.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S022.A1.110303 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\S022.D1.110303.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\S022.D1.110303 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W002-A1-1-100109.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W002-A1-1-100109 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W002-B1-1-100129.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W002-B1-1-100129 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W002-D1-1-100129.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W002-D1-1-100129 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W009-B1-1-100720.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W009-B1-1-100720 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W012-B1-1-100902.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W012-B1-1-100902 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W013.D1.1.100910.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W013.D1.1.100910 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W013-C1-1-100910.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W013-C1-1-100910 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W014-B1-1-101004.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W014-B1-1-101004 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W015-A1-1-101012.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W015-A1-1-101012 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W015-B1-1-101012.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W015-B1-1-101012 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W015-C1-1-101012.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W015-C1-1-101012 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W015-D1-1-101012.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W015-D1-1-101012 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W015-E1-1-101012.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W015-E1-1-101012 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W015-F1-1-101012.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W015-F1-1-101012 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W015-G1-1-101012.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W015-G1-1-101012 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W016-A1-1-101012.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W016-A1-1-101012 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W016-D1-1-101012.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W016-D1-1-101012 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W016-G1-1-101012.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W016-G1-1-101012 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W019-B1-1-101122.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W019-B1-1-101122 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W019-C1-1-101122.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W019-C1-1-101122 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W019-D1-1-101122.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W019-D1-1-101122 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W019-E1-1-101122.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W019-E1-1-101122 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W022-B1-1-110126.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W022-B1-1-110126 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W022-C1-1-110126.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W022-C1-1-110126 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W022-D1-1-110126.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W022-D1-1-110126 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W023 CONDR2.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W023_CONDR2 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W010 H&E.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W010_H-E 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W001 C1.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W001_C1 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W029 CONDR1.B.110615.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W029_CONDR1.B.110615 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W029 CONDR4.E.110615.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W029_CONDR4.E.110615 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\CONDR2 W001.D1.100113.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\CONDR2_W001.D1.100113 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W001.CONDR.F.110615.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W001.CONDR.F.110615 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W025 CONDR1.B.110318.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W025_CONDR1.B.110318 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W025 CONDR2.C.110318.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W025_CONDR2.C.110318 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W025 CONDR3.D.110318.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W025_CONDR3.D.110318 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W028 CONDR1.C.110531.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W028_CONDR1.C.110531 4096 40
+tile "W:\Images\CONDR-WashU\Reviewed\W028 CONDR2.D.110531.ndpi" R:\40X_Tiles\data2\Images\CONDR-WashU\Reviewed\W028_CONDR2.D.110531 4096 40

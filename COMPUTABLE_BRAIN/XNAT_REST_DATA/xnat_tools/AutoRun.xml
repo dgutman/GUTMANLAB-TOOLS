@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Pipeline xmlns="http://nrg.wustl.edu/pipeline" xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:autorun="http://www.xnat.org/java/org.nrg.pipeline.client.webservices.WebserviceClient" xsi:schemaLocation="http://nrg.wustl.edu/pipeline
+..\..\schema\pipeline.xsd" >
+	<name>AutoRun</name>
+	<location>/home/xnat/xnat/pipeline_1_4/catalog/xnat_tools</location>
+	<description>Auto-Archive Pipeline for XNAT </description>
+	<parameters>
+		<!-- Parameters for the QCImageCreator -->
+		<!-- 
+		<parameter>
+			<name>host</name>
+			<values>
+				<unique>http://cninds03.neuroimage.wustl.edu:8070/cnda_xnat</unique>
+			</values>
+			<description>XNAT Host</description>
+		</parameter>
+		<parameter>
+			<name>user</name>
+			<values>
+				<unique>mohanar</unique>
+			</values>
+			<description>XNAT User Id</description>
+		</parameter>
+		<parameter>
+			<name>pwd</name>
+			<values>
+				<unique>PWD</unique>
+			</values>
+			<description>XNAT Password</description>
+		</parameter>
+		 -->
+	</parameters>
+	<steps>
+		<step id="1" description="Create Quality Control Images"  continueOnFailure="true">
+			<resource name="WebBasedQCImageCreator" location="images/resources">
+				<argument id="session">
+					<value>^/Pipeline/parameters/parameter[name='sessionLabel']/values/unique/text()^</value>
+				</argument>
+				<argument id="xnatId">
+					<value>^/Pipeline/parameters/parameter[name='session']/values/unique/text()^</value>
+				</argument>
+				<argument id="project">
+					<value>^/Pipeline/parameters/parameter[name='xnat_project']/values/unique/text()^</value>
+				</argument>
+				<argument id="host">
+					<value>^if (count(/Pipeline/parameters/parameter[name='aliasHost']/values) > 0) then /Pipeline/parameters/parameter[name='aliasHost']/values/unique/text() else /Pipeline/parameters/parameter[name='host']/values/unique/text()^</value>
+				</argument>
+				<argument id="user">
+					<value>^/Pipeline/parameters/parameter[name='user']/values/unique/text()^</value>
+				</argument>
+				<argument id="pwd">
+					<value>^/Pipeline/parameters/parameter[name='pwd']/values/unique/text()^</value>
+				</argument>
+				<argument id="raw"/>
+			</resource>
+		</step> 
+		<step id="2" description="Notify" >
+			<resource name="Notifier" location="notifications">
+				<argument id="to">
+					<value>^/Pipeline/parameters/parameter[name='useremail']/values/unique/text()^</value>
+				</argument>
+				<argument id="cc">
+					<value>^/Pipeline/parameters/parameter[name='adminemail']/values/unique/text()^</value>
+				</argument>
+				<argument id="from">
+					<value>^/Pipeline/parameters/parameter[name='adminemail']/values/unique/text()^</value>
+				</argument>
+				<argument id="subject">
+					<value>^concat(/Pipeline/parameters/parameter[name='xnatserver']/values/unique/text(), ' update: ', /Pipeline/parameters/parameter[name='sessionLabel']/values/unique/text(),' Archiving complete')^</value>
+				</argument>
+				<argument id="host">
+					<value>^/Pipeline/parameters/parameter[name='mailhost']/values/unique/text()^</value>
+				</argument>
+				<argument id="body">
+					<value>^concat('Dear ',/Pipeline/parameters/parameter[name='userfullname']/values/unique/text(),',&lt;br&gt; &lt;p&gt; Auto archive pipeline for ', /Pipeline/parameters/parameter[name='sessionLabel']/values/unique/text(),' is complete. &lt;/p&gt;&lt;br&gt; &lt;p&gt;  Details for this session are available at &lt;a href="',/Pipeline/parameters/parameter[name='host']/values/unique/text(),'/app/action/DisplayItemAction/search_element/',/Pipeline/parameters/parameter[name='sessionType']/values/unique/text(),'/search_field/',/Pipeline/parameters/parameter[name='sessionType']/values/unique/text(),'.ID/search_value/',/Pipeline/parameters/parameter[name='session']/values/unique/text(),'"&gt;', 'the ', /Pipeline/parameters/parameter[name='xnatserver']/values/unique/text(),' website.&lt;/a&gt; &lt;/p&gt;&lt;br&gt;', /Pipeline/parameters/parameter[name='xnatserver']/values/unique/text(),' Team.')^ 
+					</value>
+				</argument>
+			</resource>
+		</step>
+	</steps>
+</Pipeline>

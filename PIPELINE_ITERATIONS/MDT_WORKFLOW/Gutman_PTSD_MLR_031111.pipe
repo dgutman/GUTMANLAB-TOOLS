@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline version=".1">
+        <connections>
+                <connection source="MetaData_1.Output" sink="VolumeRegressionAnalysis_1.DesignMatrix" />
+                <connection source="Regressors_1.Output" sink="VolumeRegressionAnalysis_1.RegressorsSpecification" />
+                <connection source="Dimensions_1.Output" sink="VolumeRegressionAnalysis_1.VolumeDimensions" />
+                <connection source="BitConverter_1.Output" sink="VolumeRegressionAnalysis_1.MaskFile" />
+                <connection source="VoxelSize_1.Output" sink="VolumeRegressionAnalysis_1.VoxelSize" />
+                <connection source="VolumeRegressionAnalysis_1.OutputP-values" sink="FalseDiscoveryRateCorrection_1.InputFilenamerawP-values" />
+                <connection source="NumberofP-Values_1.Output" sink="FalseDiscoveryRateCorrection_1.NumberofP-values" />
+                <connection source="FDRRateq_1.Output" sink="FalseDiscoveryRateCorrection_1.FDRRateq" />
+                <connection source="Dimensions_2.Output" sink="FalseDiscoveryRateCorrection_1.Dimensions" />
+                <connection source="BitConverter_1.Output" sink="FalseDiscoveryRateCorrection_1.Mask" />
+                <connection source="VoxelSize_1.Output" sink="FalseDiscoveryRateCorrection_1.VoxelSize" />
+                <connection source="VolumeRegressionAnalysis_1.OutputP-values" sink="RawP-values_1.Input" />
+                <connection source="VolumeRegressionAnalysis_1.OutputT-stats" sink="RawT-stats_1.Input" />
+                <connection source="VolumeRegressionAnalysis_1.OutputR-values" sink="RawR-values_1.Input" />
+                <connection source="VolumeRegressionAnalysis_1.OutputB-Values" sink="RawB-values_1.Input" />
+                <connection source="FalseDiscoveryRateCorrection_1.OutputFilenameDFDR-correctedp-values" sink="FDR-correctedP-values_1.Input" />
+                <connection source="Mask_1.Output" sink="BitConverter_1.Input" />
+        </connections>
+        <moduleGroup id="LONIStatistics-TwoGroups_1" name="LONI Statistics - Two Groups" package="LONI" version="1.0" posX="0" posY="0">
+                <tag>statistics</tag>
+                <tag>linear regression</tag>
+                <module id="VolumeRegressionAnalysis_1" name="Volume Regression Analysis" package="LONI Statistics" version="SOCR 2.4" description="This module somputes the Multiple Linear Regression on volumetric data.&#xA;&#xA;Responses are the VOLUME/IMAGE intensities at each voxel location.&#xA;&#xA;Predictors/covariates are various subject demographic, clinical or phenotypic data (e.g., MMSE, CDR, Gender, etc.)&#xA;&#xA;More information about  this tool is available here:&#xA;&#xA;http://wiki.stat.ucla.edu/socr/index.php/SOCR_EduMaterials_AnalysesCommandLineVolumeMultipleRegression" location="pipeline://cranium.loni.ucla.edu//usr/local/loniScripts-1.0-3_64bit/loniStats/VolumeMultipleRegression.sh" sourceCode="" icon="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&#xA;4aN/91hkH6daKKK//9k=" posX="364" posY="388" executableVersion="1.0" advancedOptions="h_vmem=8">
+                        <authors>
+                                <author fullName="Ivo Dinov" email="" website="http://www.loni.ucla.edu/~dinov" />
+                        </authors>
+                        <executableAuthors>
+                                <author fullName="Annie Chu" email="" website="http://www.SOCR.ucla.edu" />
+                                <author fullName="Teresa Lam" email="" website="http://www.SOCR.ucla.edu" />
+                                <author fullName="Ivo Dinov" email="" website="http://www.loni.ucla.edu/~dinov" />
+                        </executableAuthors>
+                        <license>http://www.loni.ucla.edu/Software/license.php
+By registering for downloads from the UCLA Laboratory of Neuro Imaging, you are agreeing to the following terms and conditions as well as to the Terms of Use of the LONI website. To view the LONI website's Terms of Use go to, http://www.loni.ucla.edu/software/termsofuse.php.
+
+  * Permission is granted to use this software without charge for non-commercial research purposes only.
+  * Other than the rights granted herein, LONI retains all rights, title, and interest in LONI software and Technology, and You retain all rights, title, and interest in Your Modifications and associated specifications, subject to the terms of this License.
+  * You may make verbatim copies of this software for personal use, or for use within your organization, provided that you duplicate all of the original copyright notices and associated disclaimers. If you provide the use of the software to other users within your organization, they also must comply with all the terms of this Software Distribution Agreement.
+  * YOU MAY NOT DISTRIBUTE COPIES of this software, or copies of software derived from this software, to others outside your organization without specific prior written permission from the UCLA Laboratory of Neuro Imaging, except where noted for specific software products.
+  * You must not remove or alter any copyright or other proprietary notices in the software.
+  * Software has not been reviewed or approved by the Food and Drug Administration, and is for non-clinical, IRB-approved Research Use Only. In no event shall data or images generated through the use of the Software be used in the provision of patient care.
+  * THE SOFTWARE IS PROVIDED "AS IS," AND THE UNIVERSITY OF CALIFORNIA AND ITS COLLABORATORS DO NOT MAKE ANY WARRANTY, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, NOR DO THEY ASSUME ANY LIABILITY OR RESPONSIBILITY FOR THE USE OF THIS SOFTWARE.
+  * This software is for research purposes only and has not been approved for clinical use.
+  * You may publish papers and books using results produced using software provided by this site provided that you reference the appropriate citations. A list of citations is available here.
+  * You agree to comply with LONI's Trademark Usage Requirements, as modified from time to time, described in the "Use of Materials Limitations" section of the LONI Terms of Use Agreement. Except as expressly provided in this License, you are granted no rights in or to any LONI trademarks now or hereafter used or licensed by LONI.
+  * All Technology and technical data delivered under this Agreement are subject to US export control laws and may be subject to export or import regulations in other countries. You agree to comply strictly with all such laws and regulations and acknowledge that you have the responsibility to obtain such licenses to export, re-export, or import as may be required after delivery to you.</license>
+                        <tag>statistics</tag>
+                        <tag>volume</tag>
+                        <tag>regression</tag>
+                        <tag>covariates</tag>
+                        <uri>http://wiki.stat.ucla.edu/socr/index.php/SOCR_EduMaterials_AnalysesCommandLineVolumeMultipleRegression</uri>
+                        <metadata>
+                                <data key="__creationDateKey" value="Wed Oct 15 11:29:50 PDT 2008" />
+                        </metadata>
+                        <input id="VolumeRegressionAnalysis_1.DesignMatrix" name="Design Matrix" description="Enter Design Matrix. See the template here:&#xA;&#xA;http://wiki.stat.ucla.edu/socr/index.php/SOCR_EduMaterials_AnalysesCommandLineVolumeMultipleRegression&#xA;" required="true" enabled="true" order="0" prefix="-dm" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Text file" extension="txt" description="Text file" />
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <input id="VolumeRegressionAnalysis_1.RegressorsSpecification" name="Regressors Specification" description="Regressor Specifications.&#xA;&#xA;Regressors must be predictors/columns/covariates listed in the Design Matrix (see first argument)&#xA;&#xA;Example:&#xA;-regressors CDR MMSE" required="true" enabled="true" order="2" prefix="-regressors" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="String" cardinality="-1" />
+                        </input>
+                        <input id="VolumeRegressionAnalysis_1.HeaderFlag" name="Header Flag" description="Header Flag (-h).&#xA;&#xA;Required for all Design Matrices." required="true" enabled="true" order="1" prefix="-h" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="String" cardinality="0" />
+                        </input>
+                        <input id="VolumeRegressionAnalysis_1.VolumeDimensions" name="Volume Dimensions" description="Specify the Z Volume Dimension&#xA;Orders is: (Z, Y, X):&#xA;&#xA;Example:&#xA;-dim 220 220 220&#xA;&#xA;For 1D or 2D data, use 1 for the higher demensions." required="true" enabled="true" order="4" prefix="-dim" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="3" />
+                        </input>
+                        <output id="VolumeRegressionAnalysis_1.OutputP-values" name="Output P-values" description="Specify the Output base-Filename for P-values&#xA;(these are the p-values for each specified predictor).&#xA;&#xA;Example:&#xA;-p /ifs/tmp/P_Value&#xA;&#xA;This base-filename will be appended automatically with covariate and suffix information as these files are written out to disc." required="false" enabled="true" order="13" prefix="-p" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="-2" cardinalityBase="Regressors Specification">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <output id="VolumeRegressionAnalysis_1.OutputR-values" name="Output R-values" description="Specify the Output base-Filename for R-values&#xA;(these are the correlation/effects for each specified predictor).&#xA;&#xA;Example:&#xA;-r /ifs/tmp/R_Value&#xA;&#xA;This base-filename will be appended automatically with covariate and suffix information as these files are written out to disc." required="false" enabled="true" order="15" prefix="-r" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="-2" cardinalityBase="Regressors Specification">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <input id="VolumeRegressionAnalysis_1.DataType" name="Data Type" description="Specify the Input Data type:&#xA;&#xA;Example: -data_type 2&#xA;-data_type [1,2,4]: &#xA;Type=1 is for Byte, &#xA;Type=2 is for Unsigned Short integer, and &#xA;Type=4 is for 4Byte=Float Volume Input;&#xA;" required="true" enabled="true" order="6" prefix="-data_type" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Enumerated" cardinality="1">
+                                        <enumeration>1</enumeration>
+                                        <enumeration>2</enumeration>
+                                        <enumeration>4</enumeration>
+                                </format>
+                                <values>
+                                        <value>2</value>
+                                </values>
+                        </input>
+                        <input id="VolumeRegressionAnalysis_1.MaskFile" name="Mask File" description="Enter an optional Mask File. It is used to restrict the voxel-based domain of the Regression Analysis.&#xA;&#xA;If no Mask is specified all voxes are processed independently.&#xA;&#xA;Example:&#xA;-mask /ifs/adni/3T/PERMS/IVO/JACOBIANS/3T_bl_002_S_0413.img &#xA;" required="false" enabled="true" order="5" prefix="-mask" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <output id="VolumeRegressionAnalysis_1.OutputT-stats" name="Output T-stats" description="Specify the Output base-Filename for the T-Stats output volumes.&#xA;&#xA;Example:&#xA;-t /ifs/tmp/T_stats&#xA;&#xA;This base-filename will be appended automatically with covariate and suffix information as these files are written out to disc." required="false" enabled="true" order="14" prefix="-t" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="-2" cardinalityBase="Regressors Specification">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <input id="VolumeRegressionAnalysis_1.Byte-SwapFlag" name="Byte-Swap Flag" description="Toggle this flag on if you want the byte-swap on all of your input/output data. Enter:&#xA;&quot;-byteswap&quot;&#xA;&#xA;Default is no flag and no byte-swap." required="false" enabled="false" order="8" prefix="-byteswap" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="String" cardinality="0" />
+                        </input>
+                        <input id="VolumeRegressionAnalysis_1.Byte-Order" name="Byte-Order" description="* big = BIG_ENDIAN processor&#xA;* little = LITTLE_ENDIAN processor&#xA;* other = default processor (java.nio.ByteOrder.nativeOrder()) " required="false" enabled="true" order="7" prefix="-byteorder" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Enumerated" cardinality="1">
+                                        <enumeration>big</enumeration>
+                                        <enumeration>little</enumeration>
+                                        <enumeration>other</enumeration>
+                                </format>
+                                <values>
+                                        <value>little</value>
+                                </values>
+                        </input>
+                        <output id="VolumeRegressionAnalysis_1.OutputB-Values" name="Output B-Values" required="false" enabled="true" order="16" prefix="-b" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="-2" cardinalityBase="Regressors Specification">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <input id="VolumeRegressionAnalysis_1.VoxelSize" name="Voxel Size" required="false" enabled="true" order="3" prefix="-vox" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="3" />
+                        </input>
+                        <output id="VolumeRegressionAnalysis_1.InterceptPValue" name="Intercept P Value" required="false" enabled="false" order="9" prefix="-intercept" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                                <dependencies>
+                                        <dependent>Intercept Beta</dependent>
+                                        <dependent>Intercept R Part Corr</dependent>
+                                        <dependent>Intercept T Stat</dependent>
+                                        <dependsOn>Intercept Beta</dependsOn>
+                                        <dependsOn>Intercept R Part Corr</dependsOn>
+                                        <dependsOn>Intercept T Stat</dependsOn>
+                                </dependencies>
+                        </output>
+                        <output id="VolumeRegressionAnalysis_1.InterceptBeta" name="Intercept Beta" required="false" enabled="false" order="10">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                                <dependencies>
+                                        <dependent>Intercept P Value</dependent>
+                                        <dependent>Intercept R Part Corr</dependent>
+                                        <dependent>Intercept T Stat</dependent>
+                                        <dependsOn>Intercept P Value</dependsOn>
+                                        <dependsOn>Intercept R Part Corr</dependsOn>
+                                        <dependsOn>Intercept T Stat</dependsOn>
+                                </dependencies>
+                        </output>
+                        <output id="VolumeRegressionAnalysis_1.InterceptRPartCorr" name="Intercept R Part Corr" required="false" enabled="false" order="11">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                                <dependencies>
+                                        <dependent>Intercept P Value</dependent>
+                                        <dependent>Intercept Beta</dependent>
+                                        <dependent>Intercept T Stat</dependent>
+                                        <dependsOn>Intercept P Value</dependsOn>
+                                        <dependsOn>Intercept Beta</dependsOn>
+                                        <dependsOn>Intercept T Stat</dependsOn>
+                                </dependencies>
+                        </output>
+                        <output id="VolumeRegressionAnalysis_1.InterceptTStat" name="Intercept T Stat" required="false" enabled="false" order="12">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                                <dependencies>
+                                        <dependent>Intercept P Value</dependent>
+                                        <dependent>Intercept Beta</dependent>
+                                        <dependent>Intercept R Part Corr</dependent>
+                                        <dependsOn>Intercept P Value</dependsOn>
+                                        <dependsOn>Intercept Beta</dependsOn>
+                                        <dependsOn>Intercept R Part Corr</dependsOn>
+                                </dependencies>
+                        </output>
+                        <executableProvenance>
+                                <binary name="SOCR_plugin.jar" description="Java JAR file" version="1.2" />
+                        </executableProvenance>
+                </module>
+                <module id="FalseDiscoveryRateCorrection_1" name="False Discovery Rate Correction" package="LONI Statistics" version="2.6" description="This module applies False Discovery Error (FDR) correction to p-values fro both Shapes and volumes.&#xA;&#xA;Shape data is entered as a list of p_values.&#xA;&#xA;Volume data is intered as raw binary volumes.&#xA;&#xA;Responses are the VOLUME/IMAGE intensities at each voxel location.&#xA;&#xA;Predictors/covariates are various subject demographic, clinical or phenotypic data (e.g., MMSE, CDR, Gender, etc.)&#xA;&#xA;More information about  this tool is available here:&#xA;&#xA;http://wiki.stat.ucla.edu/socr/index.php/SOCR_EduMaterials_AnalysesCommandLineFDR_Correction" location="pipeline://cranium.loni.ucla.edu//usr/local/loniScripts-1.0-3_64bit/loniStats/FDR_Correction.sh" sourceCode="" icon="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&#xA;4aN/91hkH6daKKK//9k=" posX="244" posY="869" executableVersion="2.6" advancedOptions="h_vmem=8">
+                        <authors>
+                                <author fullName="Ivo Dinov" email="" website="http://www.loni.ucla.edu/~dinov" />
+                        </authors>
+                        <executableAuthors>
+                                <author fullName="Annie Chu" email="" website="http://www.SOCR.ucla.edu" />
+                                <author fullName="Teresa Lam" email="" website="http://www.SOCR.ucla.edu" />
+                                <author fullName="Ivo Dinov" email="" website="http://www.loni.ucla.edu/~dinov" />
+                        </executableAuthors>
+                        <license>http://www.loni.ucla.edu/Software/license.php
+By registering for downloads from the UCLA Laboratory of Neuro Imaging, you are agreeing to the following terms and conditions as well as to the Terms of Use of the LONI website. To view the LONI website's Terms of Use go to, http://www.loni.ucla.edu/software/termsofuse.php.
+
+  * Permission is granted to use this software without charge for non-commercial research purposes only.
+  * Other than the rights granted herein, LONI retains all rights, title, and interest in LONI software and Technology, and You retain all rights, title, and interest in Your Modifications and associated specifications, subject to the terms of this License.
+  * You may make verbatim copies of this software for personal use, or for use within your organization, provided that you duplicate all of the original copyright notices and associated disclaimers. If you provide the use of the software to other users within your organization, they also must comply with all the terms of this Software Distribution Agreement.
+  * YOU MAY NOT DISTRIBUTE COPIES of this software, or copies of software derived from this software, to others outside your organization without specific prior written permission from the UCLA Laboratory of Neuro Imaging, except where noted for specific software products.
+  * You must not remove or alter any copyright or other proprietary notices in the software.
+  * Software has not been reviewed or approved by the Food and Drug Administration, and is for non-clinical, IRB-approved Research Use Only. In no event shall data or images generated through the use of the Software be used in the provision of patient care.
+  * THE SOFTWARE IS PROVIDED "AS IS," AND THE UNIVERSITY OF CALIFORNIA AND ITS COLLABORATORS DO NOT MAKE ANY WARRANTY, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, NOR DO THEY ASSUME ANY LIABILITY OR RESPONSIBILITY FOR THE USE OF THIS SOFTWARE.
+  * This software is for research purposes only and has not been approved for clinical use.
+  * You may publish papers and books using results produced using software provided by this site provided that you reference the appropriate citations. A list of citations is available here.
+  * You agree to comply with LONI's Trademark Usage Requirements, as modified from time to time, described in the "Use of Materials Limitations" section of the LONI Terms of Use Agreement. Except as expressly provided in this License, you are granted no rights in or to any LONI trademarks now or hereafter used or licensed by LONI.
+  * All Technology and technical data delivered under this Agreement are subject to US export control laws and may be subject to export or import regulations in other countries. You agree to comply strictly with all such laws and regulations and acknowledge that you have the responsibility to obtain such licenses to export, re-export, or import as may be required after delivery to you.</license>
+                        <tag>statistics</tag>
+                        <tag>volume</tag>
+                        <tag>shape</tag>
+                        <tag>p-value</tag>
+                        <tag>false discovery rate</tag>
+                        <tag>FDR</tag>
+                        <tag>multiple comparison</tag>
+                        <uri>http://wiki.stat.ucla.edu/socr/index.php/SOCR_EduMaterials_AnalysesCommandLineFDR_Correction</uri>
+                        <metadata>
+                                <data key="__creationDateKey" value="Wed Oct 15 11:29:50 PDT 2008" />
+                        </metadata>
+                        <input id="FalseDiscoveryRateCorrection_1.InputFilenamerawP-values" name="Input Filename (raw P-values)" description="Enter the name of the raw p-values file (ASCII for shapes and binary for volumes)" required="true" enabled="true" order="0" prefix="-input" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="File" extension="" description="Any type of data file" />
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <input id="FalseDiscoveryRateCorrection_1.DataType" name="Data Type" description="-type [0,1]: &#xA;Type=0 is for ASCII text input file type, e.g., Shapes&#xA;Type=1 is for binary 4Byte=Float Input file; e.g., 3D/4D volumes." required="true" enabled="true" order="2" prefix="-type" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Enumerated" cardinality="1">
+                                        <enumeration>0</enumeration>
+                                        <enumeration>1</enumeration>
+                                </format>
+                                <values>
+                                        <value>1</value>
+                                </values>
+                        </input>
+                        <output id="FalseDiscoveryRateCorrection_1.OutputFilenameDFDR-correctedp-values" name="Output Filename (DFDR-corrected p-values)" description="Enter the filename for the FDR-corrected p-values" required="true" enabled="true" order="1" prefix="-output" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <input id="FalseDiscoveryRateCorrection_1.Byte-Order" name="Byte-Order" description="The byteorder string specified the I/O dta byte-order: string is one of {big, little, other}.&#xA;&#xA;    * big = BIG_ENDIAN processor&#xA;    * little = LITTLE_ENDIAN processor&#xA;    * other = default processor (java.nio.ByteOrder.nativeOrder()) " required="false" enabled="true" order="5" prefix="-byteorder" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Enumerated" cardinality="1">
+                                        <enumeration>little</enumeration>
+                                        <enumeration>big</enumeration>
+                                        <enumeration>value</enumeration>
+                                </format>
+                                <values>
+                                        <value>little</value>
+                                </values>
+                        </input>
+                        <input id="FalseDiscoveryRateCorrection_1.NumberofP-values" name="Number of P-values" description="Enter the number of p-values in the file&#xA;-number integer&#xA;&#xA;Example, if volume is 220^3, the number to enter is: 10648000" required="true" enabled="true" order="4" prefix="-number" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <input id="FalseDiscoveryRateCorrection_1.FDRRateq" name="FDR Rate (q)" description="-fdr_rate [double]: the False Discovery Rate level (e.g., 0.05) " required="true" enabled="true" order="3" prefix="-fdr_rate" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <input id="FalseDiscoveryRateCorrection_1.Dimensions" name="Dimensions" description="dimensions of the volume in this order (x,y,z)" required="true" enabled="true" order="7">
+                                <format type="Number" cardinality="3" />
+                        </input>
+                        <input id="FalseDiscoveryRateCorrection_1.Mask" name="Mask" required="false" enabled="true" order="6" prefix="-mask" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <input id="FalseDiscoveryRateCorrection_1.VoxelSize" name="Voxel Size" description="Enter voxel size for the volume&#xA;(default is 1mm x 1mm x 1mm)" required="true" enabled="true" order="8">
+                                <format type="Number" cardinality="3" />
+                        </input>
+                        <executableProvenance>
+                                <binary name="SOCR_plugin.jar" description="Java JAR file" version="1.2" />
+                        </executableProvenance>
+                </module>
+                <dataModule id="Regressors_1" name="Regressors" posX="692" posY="15" type="String" source="true" loopIndex="false">
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Oct 01 13:32:25 PDT 2010" />
+                        </metadata>
+                        <values>
+                                <value>PTSD</value>
+                                <value>PT_AGE</value>
+                        </values>
+                        <output id="Regressors_1.Output" name="Output" required="true" enabled="true" order="-1">
+                                <format type="String" cardinality="1" />
+                        </output>
+                </dataModule>
+                <dataModule id="Dimensions_1" name="Dimensions" posX="918" posY="99" type="Number" source="true" loopIndex="false">
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Oct 01 13:32:49 PDT 2010" />
+                        </metadata>
+                        <values>
+                                <value>256</value>
+                                <value>224</value>
+                                <value>175</value>
+                        </values>
+                        <output id="Dimensions_1.Output" name="Output" required="true" enabled="true" order="-1">
+                                <format type="Number" cardinality="1" />
+                        </output>
+                </dataModule>
+                <dataModule id="Mask_1" name="Mask" posX="998" posY="138" type="File" source="true" loopIndex="false">
+                        <fileTypes>
+                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                        <need>hdr</need>
+                                </filetype>
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Oct 01 13:33:13 PDT 2010" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/ccb/agenco/ptsd/mdt/Control_MDT.img</value>
+                        </values>
+                        <output id="Mask_1.Output" name="Output" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                </dataModule>
+                <dataModule id="VoxelSize_1" name="Voxel Size" posX="877" posY="38" type="Number" source="true" loopIndex="false">
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Oct 01 13:33:44 PDT 2010" />
+                        </metadata>
+                        <values>
+                                <value>9.999008e-01</value>
+                                <value>1</value>
+                                <value>1</value>
+                        </values>
+                        <output id="VoxelSize_1.Output" name="Output" required="true" enabled="true" order="-1">
+                                <format type="Number" cardinality="1" />
+                        </output>
+                </dataModule>
+                <dataModule id="NumberofP-Values_1" name="Number of P-Values" description="x*y*z" posX="214" posY="523" type="Number" source="true" loopIndex="false">
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Oct 01 13:34:27 PDT 2010" />
+                        </metadata>
+                        <values>
+                                <value>10648000</value>
+                        </values>
+                        <output id="NumberofP-Values_1.Output" name="Output" description="x*y*z" required="true" enabled="true" order="-1">
+                                <format type="Number" cardinality="1" />
+                        </output>
+                </dataModule>
+                <dataModule id="FDRRateq_1" name="FDR Rate (q)" posX="32" posY="518" type="Number" source="true" loopIndex="false">
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Oct 01 13:35:32 PDT 2010" />
+                        </metadata>
+                        <values>
+                                <value>0.05</value>
+                        </values>
+                        <output id="FDRRateq_1.Output" name="Output" required="true" enabled="true" order="-1">
+                                <format type="Number" cardinality="1" />
+                        </output>
+                </dataModule>
+                <dataModule id="RawP-values_1" name="Raw P-values" posX="528" posY="742" type="File" source="false" loopIndex="false" dirDump="true">
+                        <fileTypes>
+                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                        <need>hdr</need>
+                                </filetype>
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Oct 01 13:36:46 PDT 2010" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/ccb/agenco/ptsd/mlr/</value>
+                        </values>
+                        <input id="RawP-values_1.Input" name="Input" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                </dataModule>
+                <dataModule id="RawT-stats_1" name="Raw T-stats" posX="608" posY="685" type="File" source="false" loopIndex="false" dirDump="true">
+                        <fileTypes>
+                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                        <need>hdr</need>
+                                </filetype>
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Oct 01 13:36:46 PDT 2010" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/ccb/agenco/ptsd/mlr/</value>
+                        </values>
+                        <input id="RawT-stats_1.Input" name="Input" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                </dataModule>
+                <dataModule id="RawR-values_1" name="Raw R-values" posX="668" posY="623" type="File" source="false" loopIndex="false" dirDump="true">
+                        <fileTypes>
+                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                        <need>hdr</need>
+                                </filetype>
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Oct 01 13:36:46 PDT 2010" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/ccb/agenco/ptsd/mlr/</value>
+                        </values>
+                        <input id="RawR-values_1.Input" name="Input" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                </dataModule>
+                <dataModule id="RawB-values_1" name="Raw B-values" posX="741" posY="574" type="File" source="false" loopIndex="false" dirDump="true">
+                        <fileTypes>
+                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                        <need>hdr</need>
+                                </filetype>
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Oct 01 13:36:46 PDT 2010" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/ccb/agenco/ptsd/mlr/</value>
+                        </values>
+                        <input id="RawB-values_1.Input" name="Input" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                </dataModule>
+                <dataModule id="FDR-correctedP-values_1" name="FDR-corrected P-values" posX="328" posY="1009" type="File" source="false" loopIndex="false" dirDump="true">
+                        <fileTypes>
+                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                        <need>hdr</need>
+                                </filetype>
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Oct 01 13:36:46 PDT 2010" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/ccb/agenco/ptsd/mlr/</value>
+                        </values>
+                        <input id="FDR-correctedP-values_1.Input" name="Input" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                </dataModule>
+                <dataModule id="MetaData_1" name="Meta Data" posX="300" posY="131" type="File" source="true" loopIndex="false">
+                        <authors>
+                                <author fullName="Alex Genco" email="alexgenco@gmail.com" website="" />
+                        </authors>
+                        <fileTypes>
+                                <filetype name="Text file" extension="txt" description="Text file" />
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Mar 11 13:28:47 PST 2011" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/ccb/agenco/ptsd/data/ptsd_gutmasn_emory_metadata_feb2011_ptsd_age.txt</value>
+                        </values>
+                        <output id="MetaData_1.Output" name="Output" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Text file" extension="txt" description="Text file" />
+                                        </fileTypes>
+                                </format>
+                        </output>
+                </dataModule>
+                <dataModule id="Dimensions_2" name="Dimensions" posX="338" posY="647" type="Number" source="true" loopIndex="false">
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Oct 01 13:32:49 PDT 2010" />
+                        </metadata>
+                        <values>
+                                <value>175</value>
+                                <value>224</value>
+                                <value>256</value>
+                        </values>
+                        <output id="Dimensions_2.Output" name="Output" required="true" enabled="true" order="-1">
+                                <format type="Number" cardinality="1" />
+                        </output>
+                </dataModule>
+                <module id="BitConverter_1" name="Bit Converter" package="LONI" version="v1.0" description="converts analyze images between 8, 16, and 32 bits" location="pipeline://cranium.loni.ucla.edu//usr/local/loniApps-1.0-4_64bit/ieckstei/anlz_convert" sourceCode="" icon="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&#xA;AMeI44xPRFizAAAAAElFTkSuQmCC" posX="938" posY="241" executableVersion="v1.0">
+                        <authors>
+                                <author fullName="Alen Zamanyan" email="Alen.Zamanyan@loni.ucla.edu" website="http://loni.ucla.edu" />
+                        </authors>
+                        <executableAuthors>
+                                <author fullName="Ilya Eckstein" email="ilya.eckstein@loni.ucla.edu" website="http://www.geometry.caltech.edu/~ilyaeck/proff.html" />
+                        </executableAuthors>
+                        <license>http://www.loni.ucla.edu/Software/license.php
+By registering for downloads from the UCLA Laboratory of Neuro Imaging, you are agreeing to the following terms and conditions as well as to the Terms of Use of the LONI website. To view the LONI website's Terms of Use go to, http://www.loni.ucla.edu/software/termsofuse.php.
+
+  * Permission is granted to use this software without charge for non-commercial research purposes only.
+  * Other than the rights granted herein, LONI retains all rights, title, and interest in LONI software and Technology, and You retain all rights, title, and interest in Your Modifications and associated specifications, subject to the terms of this License.
+  * You may make verbatim copies of this software for personal use, or for use within your organization, provided that you duplicate all of the original copyright notices and associated disclaimers. If you provide the use of the software to other users within your organization, they also must comply with all the terms of this Software Distribution Agreement.
+  * YOU MAY NOT DISTRIBUTE COPIES of this software, or copies of software derived from this software, to others outside your organization without specific prior written permission from the UCLA Laboratory of Neuro Imaging, except where noted for specific software products.
+  * You must not remove or alter any copyright or other proprietary notices in the software.
+  * Software has not been reviewed or approved by the Food and Drug Administration, and is for non-clinical, IRB-approved Research Use Only. In no event shall data or images generated through the use of the Software be used in the provision of patient care.
+  * THE SOFTWARE IS PROVIDED "AS IS," AND THE UNIVERSITY OF CALIFORNIA AND ITS COLLABORATORS DO NOT MAKE ANY WARRANTY, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, NOR DO THEY ASSUME ANY LIABILITY OR RESPONSIBILITY FOR THE USE OF THIS SOFTWARE.
+  * This software is for research purposes only and has not been approved for clinical use.
+  * You may publish papers and books using results produced using software provided by this site provided that you reference the appropriate citations. A list of citations is available here.
+  * You agree to comply with LONI's Trademark Usage Requirements, as modified from time to time, described in the "Use of Materials Limitations" section of the LONI Terms of Use Agreement. Except as expressly provided in this License, you are granted no rights in or to any LONI trademarks now or hereafter used or licensed by LONI.
+  * All Technology and technical data delivered under this Agreement are subject to US export control laws and may be subject to export or import regulations in other countries. You agree to comply strictly with all such laws and regulations and acknowledge that you have the responsibility to obtain such licenses to export, re-export, or import as may be required after delivery to you.</license>
+                        <tag>convert</tag>
+                        <tag>analyze</tag>
+                        <tag>bits</tag>
+                        <uri>http://loni.ucla.edu</uri>
+                        <metadata>
+                                <data key="__creationDateKey" value="Tue Sep 23 15:55:40 PDT 2008" />
+                        </metadata>
+                        <input id="BitConverter_1.Input" name="Input" description="name of input file" required="true" enabled="true" order="0">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <output id="BitConverter_1.Output" name="Output" description="name of output file" required="true" enabled="true" order="1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <input id="BitConverter_1.BitsPerVoxelinOutput" name="Bits Per Voxel in Output" description="The number of bits per voxel in the output&#xA;0 - keep the datatype unchanged" required="true" enabled="true" order="2">
+                                <format type="Enumerated" cardinality="1">
+                                        <enumeration>0</enumeration>
+                                        <enumeration>8</enumeration>
+                                        <enumeration>16</enumeration>
+                                        <enumeration>32</enumeration>
+                                </format>
+                                <values>
+                                        <value>8</value>
+                                </values>
+                        </input>
+                </module>
+                <variables>
+                        <variable name="MMSCORE">//idaxs/project/subject/visit/assessment[@name='MMSE']/component[@name='MMSE Total Score']/assessmentScore[@attribute='MMSCORE']</variable>
+                        <variable name="SUID">//idaxs/project/subject/subjectIdentifier</variable>
+                        <variable name="y">//idaxs/project/subject/study/subjectAge</variable>
+                        <variable name="Var 1">Value</variable>
+                        <variable name="TestCDR">//idaxs/project/subject/study/weightKg</variable>
+                        <variable name="age">//idaxs/project/subject/study/subjectAge</variable>
+                        <variable name="CDRSCORE">//idaxs/project/subject/visit/assessment[@name='CDR']/component[@name='CDR Total Score']/assessmentScore[@attribute='CDGLOBAL']</variable>
+                        <variable name="Age">//idaxs/project/subject/study/subjectAge</variable>
+                        <variable name="Var sasasa2">Value</variable>
+                </variables>
+                <metadata>
+                        <data key="__creationDateKey" value="Thu Oct 21 14:30:10 PDT 2010" />
+                </metadata>
+        </moduleGroup>
+</pipeline>
+

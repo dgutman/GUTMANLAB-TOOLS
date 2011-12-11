@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline version=".1">
+        <connections>
+                <connection source="smartline_maybergDBSdatapreskullextract_ROBEX_1.smartlineoutput" sink="ROBEX_1.InputFile" />
+                <connection source="maybergDBSdatapreskullextract_1.Output" sink="smartline_maybergDBSdatapreskullextract_ROBEX_1.smartlineinput" />
+                <connection source="ROBEX_1.OutputFile" sink="ROBEXExtractedimagesforDBS_1.Input" />
+        </connections>
+        <moduleGroup id="ROBEXnoRefin_1" name="ROBEXnoRefin" posX="0" posY="0">
+                <uri>http://www.loni.ucla.edu/twiki/bin/view/CCB/PipelineWorkflows_ROBEX</uri>
+                <module id="ROBEX_1" name="ROBEX" package="LONI" version="1.0" description="ROBEX: parameter-less, robust brain extraction&#xA;&#xA;Removes non-bran tissue from the MRI using a shape model+free deformation as generative model and a random forest as discriminative model.&#xA;&#xA;Please note that ROBEX requires the brain to be oriented in the &quot;standard&quot; way.&#xA;&#xA;Reference:&#xA;Iglesias JE, Liu CY, Thompson P, Tu Z: &quot;Robust Brain Extraction Across Datasets and Comparison with Publicly Available Methods&quot;, IEEE Transactions on Medical Imaging, accepted for publication (2011). &#xA;&#xA;http://www.loni.ucla.edu/twiki/bin/view/CCB/PipelineWorkflows_ROBEX&#xA;http://www.loni.ucla.edu/~jiglesia" location="pipeline://cranium.loni.ucla.edu//usr/local/loniApps/jiglesia/ROBEX" sourceCode="" icon="/9j/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAx&#xA;NDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy&#xA;MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAAUCAA4ADgEASIAAhEBAxEBBCIA/8QAHwAAAQUB&#xA;AQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEG&#xA;E1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVW&#xA;V1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLD&#xA;xMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAA&#xA;AAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKR&#xA;obHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hp&#xA;anN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU&#xA;1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADgQBAAIRAxEEAAA/APn+rFjZzaheRWsABkkOBuOA&#xA;OMkn8Aar12nw7so5767uHDN5QRCoOBsJLN+ifzqoK8rEydlc+f6taZp11q+p22nWURlubmQRxoO5&#xA;P8hVWvX/ANnvSEu/FuoapIqsLG2CpkZKvIcAj0+VXH411nhfw1ZabZmSPypbiRQkk7ruC8FiP9np&#xA;2zx710DaWuBmPMWQuCpXP1wOfrjNTSXtppREaQhRtPyIeFyd2fr2+lW5das7AuLtHjaNRmMjO/vw&#xA;R9Afx/CupWSMbs9N8B/CbRfCdks19DDqOrOv7yeVNyJ0O1FPAxj72Mn26V3kllazQPBLbQvC4w0b&#xA;Rgq31HQ1PRXnPjPwqnmyS22leTsTdJcRttViSeq+vIz379K84nt5bWdoZ42jkXqrCvdNd1fS/wCz&#xA;5LC6d4o5I1JihbczDcpAB6DO3v2FeT+LURbyxdAAZLNWY45OHdRn1OAB+FYVI9TSD6Hl3jT4K6Br&#xA;WnzzaHax6bqgBaPyyRFIf7rL0UH1AGPevme6tZ7G7mtLqJoriFzHJG4wVYHBBr7pr5c+O9hDZfEh&#xA;pYU2m7tI55PdssmfyQVz9FFFZGh5nRRRRXe/DUwyHVbYt/pDLFLGvPIUsDz0HLr+dcFXQeCb77D4&#xA;usCzSeXM/kOqH728bQD6jcVP4VpRdpq5nVV4MK9o/Z21OODX9Z0xuHurdJkP/XNiCP8AyJ+leL10&#xA;vw+1R9H+IGh3aMVH2tInOf4HOxv0Y130t9Ndbppckk9exHHIqLU5ZDFG6qrKBxuyVx7gd62rvTET&#xA;TpDDGUVJWQAnJAAB/rWB5jeSYs98CuqSWxyxb3Psqiiism8hQQJeKImDSFdmwquB0JANUPHNyrRa&#xA;NaLCq+VbtL5iH5X3ORwO33PxzWrLEkCSQv5jrjPyYILeh9Bjv+lc74xuknv7CBVYPa2MUUhYdWOX&#xA;49sOPyNc9Rqx0U0FfNX7Qd28vjiytWjVUgsVKtjltztnn04/n619K18q/G7Vo9T+JV1HEPlsYY7U&#xA;t/eIyx/IuR+Fc7RRRWJsedUUUUVoaCHPiLTBEFaT7XFtDNtBO8YyQDj64P0rPrr/AIb6GdW8Vw3U&#xA;hZLPTiLqWQcfMpyi5wRksBwcZAbHSqjfmViZOydwqS3kkiuYpIs+Yjhkx6g8VHXWfDnwvdeKfGdh&#xA;bwwlraCVJ7uTHypGpBOT6nGB9frXpeo3rWd/MmN0bH5kPQ//AF6wZVtrif8A0dgHJ+4xwc/1q/rM&#xA;qyXEjDnca5W8UbyM5rtq72OOntc+w6KKK6C10OW0M13qyNaaUoLT3DsyhF+gPJPQDuSAK8q1W/Op&#xA;6tdXpVkE0rOqM+/YuflXPcAYA9hXf6/HcXXwwbyk3RWuoRyynIG1drID78uo49a80rik3c64IzPE&#xA;GvWHhrRbjU9RnSKGFCQGYAyNjhV9SfSvizUL6fVNSur+6bdcXMrTSN6sxyf519DftD280nhHTJkj&#xA;Zoor394wGQuUOM184UUUUVJYUUUV0nhrTvDzquoeIdVWGBJiq2MaM0k+0AncV+4vzKM9ThgMYzXU&#xA;v8RtJhsYrCwsrq2s4RtjhVFAUf8AfXJ7knknmiitIVHDYzlBT3NfQbXQ5rhpdd1Ge2tYyCYbWEyT&#xA;Teyk4VfqT+Br2TQfjL4G8L6cunaN4e1KC2U5J2x7nb+8x35J+pooqkPFml3EXmPM8b7iNjxnPbnj&#xA;Ixz69qof2pZXDMVuU467jt/nRRVe1lJ6k+yUVobkH7QfhKRgJLLV4s92hjIH5Pn9K6Cw+L/ga/kE&#xA;aa4kLkdLiJ4x/wB9EY/Wiiun8Na79gD28yJNaTrho3AZHUjnIPBBFW9V+HeheIy11ok6aVdMpJhK&#xA;loHYkn1zHyQOMgAcCiim4qRF2lzI3G13wtrdlJbNqukXttMNjxm4jkVx6EZryjxR8DNKv2kuvCeq&#xA;wwOckWc8m+Mn0Vxkr+IP1FFFed+I/BmueFiranabbd5GjjuI3DxuR6EcjI5AYAkZ44OCiiuaDurs&#xA;6E7o8c8QeFNb8LXQg1iwktyT8knDRv8A7rDIP060UUV//9k=" posX="277" posY="221" executableVersion="1.0" advancedOptions="h_stack=256;h_vmem=4">
+                        <executableAuthors>
+                                <author fullName="Juan Eugenio Iglesias" email="jeiglesias@ucla.edu" website="http://www.loni.ucla.edu/~jiglesia" />
+                        </executableAuthors>
+                        <tag>skull stripping</tag>
+                        <tag>whole brain extraction</tag>
+                        <uri>http://www.loni.ucla.edu/twiki/bin/view/CCB/PipelineWorkflows_ROBEX</uri>
+                        <metadata>
+                                <data key="__creationDateKey" value="Tue Sep 12 17:10:04 PDT 2006" />
+                        </metadata>
+                        <input id="ROBEX_1.InputFile" name="Input File" description="Scan to strip" required="false" enabled="true" order="0">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image 3D" extension="img" description="Analyze Image 3D file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <output id="ROBEX_1.OutputFile" name="Output File" description="Stripped volume" required="true" enabled="true" order="1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <output id="ROBEX_1.Maskfile" name="Mask file" description="Brain Mask" required="false" enabled="false" order="2">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                </module>
+                <dataModule id="maybergDBSdatapreskullextract_1" name="mayberg DBS data pre skullextract" posX="303" posY="26" type="File" source="true" loopIndex="false">
+                        <fileTypes>
+                                <filetype name="NIFTI GZ" extension="nii.gz" description="Gzipped NIFTI file." />
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Wed Jul 27 07:29:42 EDT 2011" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.001.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.002.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.003.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.005.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.006.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.007.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.009.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.010.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.013.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.014.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.015.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.017.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.018.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.019.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.020.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.021.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.022.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.023.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.024.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.801.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.802.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.803.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.804.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.805.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.806.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.807.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.808.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.809.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.810.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.811.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.812.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.813.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.814.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.815.reoriented.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/DBS_FULL_IMAGES/DBS.816.reoriented.nii.gz</value>
+                        </values>
+                        <output id="maybergDBSdatapreskullextract_1.Output" name="Output" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="NIFTI GZ" extension="nii.gz" description="Gzipped NIFTI file." />
+                                        </fileTypes>
+                                </format>
+                        </output>
+                </dataModule>
+                <module name="smartline_mayberg DBS data pre skullextract_ROBEX" description="Smartline conversion from type (nii.gz) of module mayberg DBS data pre skullextract to type (img,hdr) of module ROBEX of package LONI" location="pipeline://cranium.loni.ucla.edu/java" id="smartline_maybergDBSdatapreskullextract_ROBEX_1" package="Pipeline Utilities" posX="314" posY="140" rotation="0" smartModule="true" advancedOptions="h_vmem=4">
+                        <input id="smartline_maybergDBSdatapreskullextract_ROBEX_1.jarfile" name="jar file" required="false" enabled="true" predefined="true" order="0" prefix="-Djava.awt.headless=true -Xmx2500m -jar" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="JAR" extension="jar" description="Sun JAR file" />
+                                        </fileTypes>
+                                </format>
+                                <values>
+                                        <value>pipeline://cranium.loni.ucla.edu/smartline/Smartline.jar</value>
+                                </values>
+                        </input>
+                        <input id="smartline_maybergDBSdatapreskullextract_ROBEX_1.smartlineinput" name="smartline input" required="false" enabled="true" order="1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="NIFTI GZ" extension="nii.gz" description="Gzipped NIFTI file." />
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <input id="smartline_maybergDBSdatapreskullextract_ROBEX_1.softwarename" name="software name" required="false" enabled="true" predefined="true" order="2">
+                                <format type="String" cardinality="1" />
+                                <values>
+                                        <value>LONI</value>
+                                </values>
+                        </input>
+                        <output id="smartline_maybergDBSdatapreskullextract_ROBEX_1.smartlineoutput" name="smartline output" required="false" enabled="true" order="3">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image 3D" extension="img" description="Analyze Image 3D file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                </module>
+                <dataModule id="ROBEXExtractedimagesforDBS_1" name="ROBEX Extracted images for DBS" posX="338" posY="426" type="File" source="false" loopIndex="false" dirDump="false">
+                        <fileTypes>
+                                <filetype name="File" extension="" description="Any type of data file" />
+                                <filetype name="Analyze Image 3D" extension="img" description="Analyze Image 3D file">
+                                        <need>hdr</need>
+                                </filetype>
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Wed Jul 27 07:32:40 EDT 2011" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.001.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.002.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.003.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.005.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.006.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.007.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.009.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.010.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.013.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.014.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.015.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.017.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.018.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.019.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.020.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.021.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.022.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.023.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.024.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.801.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.802.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.803.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.804.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.805.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.806.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.807.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.808.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.809.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.810.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.811.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.812.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.813.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.814.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.815.reoriented.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/MAYBERG_LONI/ROBEX_SKULLEXTRACTED/DBS.816.reoriented.img</value>
+                        </values>
+                        <input id="ROBEXExtractedimagesforDBS_1.Input" name="Input" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="File" extension="" description="Any type of data file" />
+                                                <filetype name="Analyze Image 3D" extension="img" description="Analyze Image 3D file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                </dataModule>
+                <metadata>
+                        <data key="__creationDateKey" value="Tue Mar 29 08:53:47 PDT 2011" />
+                </metadata>
+        </moduleGroup>
+</pipeline>
+

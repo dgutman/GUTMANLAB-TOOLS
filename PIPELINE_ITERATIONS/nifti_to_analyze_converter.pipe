@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline version=".1">
+        <connections>
+                <connection source="smartline_Data_ANALYZE_OUTPUT_1.smartlineoutput" sink="ANALYZE_OUTPUT_1.Input" />
+                <connection source="Data_1.Output" sink="smartline_Data_ANALYZE_OUTPUT_1.smartlineinput" />
+        </connections>
+        <moduleGroup id="nifti_to_analyze_converter_1" name="nifti_to_analyze_converter" posX="0" posY="0">
+                <studyModule id="Data_1" name="Data" posX="491" posY="196" type="File">
+                        <fileTypes>
+                                <filetype name="NIFTI GZ" extension="nii.gz" description="Gzipped NIFTI file." />
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Tue May 25 16:55:45 PDT 2010" />
+                        </metadata>
+                        <values>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/6610.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/6610_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/6753.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/6753_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/6824.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/6824_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7373.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7373_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7422.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7422_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7464.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7464_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7470.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7470_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7555.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7555_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7618.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7618_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7806.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7806_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7807.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7807_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7810.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7810_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8025.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8025_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8155.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8155_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8178.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8178_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8382.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8382_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8383.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8383_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8453.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8453_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8489.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8489_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8496.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8496_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8518.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8518_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8543.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8543_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8593.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8593_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8595.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8595_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8798.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8798_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8855.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8855_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8857.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8857_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8871.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8871_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8883.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8883_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8897.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8897_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8940.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8940_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8982.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8982_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8985.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8985_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8993.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8993_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9005.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9005_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9035.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9035_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9080.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9080_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9083.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9083_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9176.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9176_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9185.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9185_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9197.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9197_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9215.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9215_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9233.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9233_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9251.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9251_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9264.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9264_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9268.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9268_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9292.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9292_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9295.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9295_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9449.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9449_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9465.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9465_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9470.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9470_T1_flipped-skullstripped.nii.gz</value>
+                                <value metadata="pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9522.xml">pipeline://cranium.loni.ucla.edu//ifshome/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9522_T1_flipped-skullstripped.nii.gz</value>
+                        </values>
+                        <output id="Data_1.Output" name="Output" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="NIFTI GZ" extension="nii.gz" description="Gzipped NIFTI file." />
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <studyGroups>
+                                <studygroup name="Group 1" query="{Group}= 1" />
+                                <studygroup name="Group 2" query="{Group}= 2" />
+                                <studygroup name="Group 3" query="{Group}= 3" />
+                        </studyGroups>
+                </studyModule>
+                <dataModule id="ANALYZE_OUTPUT_1" name="ANALYZE_OUTPUT" posX="455" posY="453" type="File" source="false" loopIndex="false" dirDump="false">
+                        <fileTypes>
+                                <filetype name="Analyze Header" extension="hdr" description="Analyze Header file">
+                                        <need>img</need>
+                                </filetype>
+                                <filetype name="File" extension="" description="Any type of data file" />
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Nov 25 11:37:10 EST 2011" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/6610_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/6753_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/6824_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7373_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7422_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7464_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7470_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7555_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7618_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7806_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7807_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/7810_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8025_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8155_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8178_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8382_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8383_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8453_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8489_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8496_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8518_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8543_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8593_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8595_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8798_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8855_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8857_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8871_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8883_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8897_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8940_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8982_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8985_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/8993_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9005_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9035_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9080_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9083_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9176_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9185_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9197_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9215_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9233_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9251_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9264_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9268_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9292_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9295_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9449_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9465_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9470_T1_flipped-skullstripped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/PTSD/ANALYZE_INPUT/dgutman/PTSD/T1_MPRAGE_IMAGES/ANALYZE_FORMAT_SKULLSTRIPPED/9522_T1_flipped-skullstripped.hdr</value>
+                        </values>
+                        <input id="ANALYZE_OUTPUT_1.Input" name="Input" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Header" extension="hdr" description="Analyze Header file">
+                                                        <need>img</need>
+                                                </filetype>
+                                                <filetype name="File" extension="" description="Any type of data file" />
+                                        </fileTypes>
+                                </format>
+                        </input>
+                </dataModule>
+                <module name="smartline_Data_ANALYZE_OUTPUT" description="Smartline conversion from type (nii.gz) of module Data to type (hdr,img) of module ANALYZE_OUTPUT" location="pipeline://cranium.loni.ucla.edu/java" id="smartline_Data_ANALYZE_OUTPUT_1" package="Pipeline Utilities" posX="489" posY="337" rotation="0" smartModule="true" gridVariables="h_vmem=4">
+                        <input id="smartline_Data_ANALYZE_OUTPUT_1.jarfile" name="jar file" required="false" enabled="true" predefined="true" order="0" prefix="-Djava.awt.headless=true -Xmx2500m -jar" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="JAR" extension="jar" description="Sun JAR file" />
+                                        </fileTypes>
+                                </format>
+                                <values>
+                                        <value>pipeline://cranium.loni.ucla.edu/smartline/Smartline.jar</value>
+                                </values>
+                        </input>
+                        <input id="smartline_Data_ANALYZE_OUTPUT_1.smartlineinput" name="smartline input" required="false" enabled="true" order="1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="NIFTI GZ" extension="nii.gz" description="Gzipped NIFTI file." />
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <input id="smartline_Data_ANALYZE_OUTPUT_1.softwarename" name="software name" required="false" enabled="true" predefined="true" order="2">
+                                <format type="String" cardinality="1" />
+                                <values>
+                                        <value>General</value>
+                                </values>
+                        </input>
+                        <output id="smartline_Data_ANALYZE_OUTPUT_1.smartlineoutput" name="smartline output" required="false" enabled="true" order="3">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Header" extension="hdr" description="Analyze Header file">
+                                                        <need>img</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <output id="smartline_Data_ANALYZE_OUTPUT_1.MetadataOutput_Predefined" name="MetadataOutput_Predefined" required="true" enabled="true" predefined="true" isMetadata="true" order="4">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="XML File" extension="xml" description="XML File" />
+                                        </fileTypes>
+                                </format>
+                        </output>
+                </module>
+                <variables>
+                        <variable name="gender">//PipelineMetadata/Sex</variable>
+                        <variable name="Group">//PipelineMetadata/Group</variable>
+                </variables>
+        </moduleGroup>
+</pipeline>
+
