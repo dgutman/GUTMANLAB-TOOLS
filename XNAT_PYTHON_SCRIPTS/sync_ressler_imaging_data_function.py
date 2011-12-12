@@ -14,22 +14,19 @@ PROJECT_ID="GTP_PROD"
 xnat= Interface(server='http://xnat.cci.emory.edu:8080/xnat',
                 user='nbia',password='nbia',
                 cachedir=os.path.join(os.path.expanduser('~'),'.store'))
- 
 
 ## this directory gets rsynced with the BITC server every week to get latest imaging cases...
 ROOT_DIRECTORY_TO_CHECK = '/drobo/BITC_MIRROR/RESSLER_DATA/ressler/PSYCHIATRY-RESSLERRESILIENCEandVULNERABILITY/'
-FILES_IN_DIRECTORY = glob.glob1(ROOT_DIRECTORY_TO_CHECK,"*Subject*")
 
 rootdir = ROOT_DIRECTORY_TO_CHECK
 subj_dirs = [ f for f in glob.glob1(rootdir, '*Subject*') if os.path.isdir(os.path.join(rootdir, f)) ]
 #print subj_dirs
 print len(subj_dirs),"directories had a RESSLER  tag"
 
-print subj_dirs
+#print subj_dirs
 
 DIRECTORIES_ON_HARD_DRIVE = []
 
-#print FILES_IN_DIRECTORY
 
 for individual_directories in subj_dirs:
 #    print individual_directories
@@ -95,18 +92,22 @@ def upload_dicom_directory_to_xnat_using_deech_script(SUBJECT_ID,EXPERIMENT_ID,P
      system_command =  '/IMAGING_SCRATCH/TCGA_DICOM_CACHE/SCRIPTS/dg_python_tools/src/upload-dicom-zipfile-to-prearchive.sh '+PROJECT_ID+" "+SUBJECT_ID+" "+EXPERIMENT_ID+" "+TARGET_DIRECTORY+' \'http://xnat.cci.emory.edu:8080/xnat\' nbia nbia'
      print system_command,"was the system command"
 #    os.system('./upload-dicom-zipfile.sh',PROJECT_ID, SUBJECT_ID, EXPERIMENT_ID,TARGET_DIRECTORY,'\'http://xnat.cci.emory.edu:8080/xnat\' nbia nbia')
-#    os.system(system_command)
+     os.system(system_command)
      return
 
-def create_dicom_directory_zipfile(EXPERIMENT_ID,PROJECT_ID,TARGET_DIRECTORY):
-     system_command =  '/home/dgutman/Dropbox/GIT_ROOT/XNAT_PYTHON_SCRIPTS/zip_up_a_dicom_dir.pl '+PROJECT_ID+" "+SUBJECT_ID+" "+EXPERIMENT_ID+" "+TARGET_DIRECTORY+' \'http://xnat.cci.emory.edu:8080/xnat\' nbia nbia'
+def upload_dicom_zipdirectory_to_xnat_using_deech_script(SUBJECT_ID,EXPERIMENT_ID,PROJECT_ID,TARGET_ZIP):
+     system_command =  '/home/dgutman/Dropbox/GIT_ROOT/XNAT_PYTHON_SCRIPTS/upload-dicom-zipfile.sh '+PROJECT_ID+" "+SUBJECT_ID+" "+EXPERIMENT_ID+" "+TARGET_ZIP+' \'http://xnat.cci.emory.edu:8080/xnat\' nbia nbia'
      print system_command,"was the system command"
-#    os.system('./upload-dicom-zipfile.sh',PROJECT_ID, SUBJECT_ID, EXPERIMENT_ID,TARGET_DIRECTORY,'\'http://xnat.cci.emory.edu:8080/xnat\' nbia nbia')
+     os.system(system_command)
+     return
+
+def create_dicom_directory_zipfile(BASE_DIRECTORY,TARGET_ZIP_FILE_NAME):
+     system_command =  '/home/dgutman/Dropbox/GIT_ROOT/XNAT_PYTHON_SCRIPTS/zip_up_a_dicom_dir.pl '+BASE_DIRECTORY+" "+TARGET_ZIP_FILE_NAME+" "
+     print system_command,"was the system command"
 #    os.system(system_command)
      return
 
 
- 
 
 #     os.path.exists()   will check if a path exist
 
@@ -116,17 +117,23 @@ def create_dicom_directory_zipfile(EXPERIMENT_ID,PROJECT_ID,TARGET_DIRECTORY):
        ## now that I have the list of patients on my hard drive and the list of patients that are in XNAT
 ## I can find the ones I need to upload... and upload em
 
+
 for patients_on_disk in DIRECTORIES_ON_HARD_DRIVE:
     if patients_on_disk not in unique_patient_list_in_xnat:
         print "You need to upload",patients_on_disk
-        for individual_directories in FILES_IN_DIRECTORY:
+        for individual_directories in subj_dirs:
             if( individual_directories.find(patients_on_disk) != -1): 
-#               print individual_directories,"needs to be uploaded for",patients_on_disk
+                print individual_directories,"needs to be uploaded for",patients_on_disk
 		SUBJECT_ID = re.search('Subject(\d{2,5})',individual_directories)
                 SUBJECT_ID = SUBJECT_ID.group(1)
                 EXPERIMENT_ID=individual_directories
                 TARGET_DIRECTORY=ROOT_DIRECTORY_TO_CHECK+individual_directories
-		TARGET_ZIP_FILE = TARGET_DIRECTORY+".zip"
+		TARGET_ZIP_FILE = TARGET_DIRECTORY,".zip"
 		print TARGET_ZIP_FILE," is the target zip file"
-                upload_dicom_directory_to_xnat_using_deech_script(SUBJECT_ID,individual_directories,PROJECT_ID,TARGET_DIRECTORY)
-
+		if(os.path.exists(TARGET_ZIP_FILE)):
+		    print TARGET_ZIP_FILE+"was already created"
+	            upload_dicom_directory_to_xnat_using_deech_script(SUBJECT_ID,individual_directories,PROJECT_ID,TARGET_DIRECTORY)
+		else:
+		    create_dicom_directory_zipfile(individual_directories,TARGET_ZIP_FILE)
+	            upload_dicom_zipdirectory_to_xnat_using_deech_script(SUBJECT_ID,individual_directories,PROJECT_ID,TARGET_ZIP_FILE)
+		
