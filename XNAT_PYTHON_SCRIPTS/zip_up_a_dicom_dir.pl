@@ -1,4 +1,4 @@
-#!usr/bin/perl
+#!/usr/bin/perl
 use File::Basename;
 
 
@@ -6,6 +6,9 @@ $input_directory = $ARGV[0];
 $CURRENT_DIR = $input_directory;
 
 
+$image_base_dir = "/drobo/BITC_MIRROR/RESSLER_DATA/ressler/PSYCHIATRY-RESSLERRESILIENCEandVULNERABILITY/";
+
+chdir($image_base_dir);
 
 print "$CURRENT_DIR is current directory...\n";
 
@@ -14,7 +17,6 @@ print "$CURRENT_DIR is current directory...\n";
 	if( -d $CURRENT_DIR)
 		{
 		($file,$dir) = fileparse($CURRENT_DIR);
-		
 ## Removing special characters like spaces and commas that BREAK everything
 		$zip_file = $file;
 		$zip_file =~ s/,//;

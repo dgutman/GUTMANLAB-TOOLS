@@ -70,12 +70,18 @@ for current_patient in subject_list_for_project:
 # now iterate through subjects with associated experiemnts
     experiments_for_this_subject = project_object.subject(current_patient).experiments().get()
     found_imaging_data=0
+
+#for current_exp in project_object.subject(current_patient).experiments().get():
+#    scans_for_this_subject = project_object.subject(current_patient).experiment(current_exp).scans().get()
+#    if len(scans_for_this_subject) == 0:
+        #this is exp has no scans
     for experiment_id in experiments_for_this_subject:
 #       print experiment_id
-        found_imaging_data=1
-        patients_with_imaging_data.append(current_patient)
-        
-    total_patients_with_imaging_data += found_imaging_data
+        scans_for_this_subject = project_object.subject(current_patient).experiment(experiment_id).scans().get()
+        if len(scans_for_this_subject) > 0:
+            found_imaging_data=1
+            patients_with_imaging_data.append(current_patient)
+            total_patients_with_imaging_data += found_imaging_data
 
 print "A total of",total_patients_with_imaging_data,"had imaging data in XNAT for the ",PROJECT_ID,"project"
 print len(patients_with_imaging_data)," total experiments associated with this data set"
@@ -88,13 +94,6 @@ def check_xnat_to_see_if_experiment_id_exists(SUBJECT_ID,EXPERIMENT_ID):
     '''This function will query an XNAT server and see if a project exists '''
     return xnat.select.project(PROJECT_ID).subject(SUBJECT_ID).experiment(EXPERIMENT_ID).exists()
 
-def upload_dicom_directory_to_xnat_using_deech_script(SUBJECT_ID,EXPERIMENT_ID,PROJECT_ID,TARGET_DIRECTORY):
-     system_command =  '/IMAGING_SCRATCH/TCGA_DICOM_CACHE/SCRIPTS/dg_python_tools/src/upload-dicom-zipfile-to-prearchive.sh '+PROJECT_ID+" "+SUBJECT_ID+" "+EXPERIMENT_ID+" "+TARGET_DIRECTORY+' \'http://xnat.cci.emory.edu:8080/xnat\' nbia nbia'
-     print system_command,"was the system command"
-#    os.system('./upload-dicom-zipfile.sh',PROJECT_ID, SUBJECT_ID, EXPERIMENT_ID,TARGET_DIRECTORY,'\'http://xnat.cci.emory.edu:8080/xnat\' nbia nbia')
-     os.system(system_command)
-     return
-
 def upload_dicom_zipdirectory_to_xnat_using_deech_script(SUBJECT_ID,EXPERIMENT_ID,PROJECT_ID,TARGET_ZIP):
      system_command =  '/home/dgutman/Dropbox/GIT_ROOT/XNAT_PYTHON_SCRIPTS/upload-dicom-zipfile.sh '+PROJECT_ID+" "+SUBJECT_ID+" "+EXPERIMENT_ID+" "+TARGET_ZIP+' \'http://xnat.cci.emory.edu:8080/xnat\' nbia nbia'
      print system_command,"was the system command"
@@ -102,21 +101,15 @@ def upload_dicom_zipdirectory_to_xnat_using_deech_script(SUBJECT_ID,EXPERIMENT_I
      return
 
 def create_dicom_directory_zipfile(BASE_DIRECTORY,TARGET_ZIP_FILE_NAME):
-     system_command =  '/home/dgutman/Dropbox/GIT_ROOT/XNAT_PYTHON_SCRIPTS/zip_up_a_dicom_dir.pl '+BASE_DIRECTORY+" "+TARGET_ZIP_FILE_NAME+" "
+     system_command =  '/home/dgutman/Dropbox/GIT_ROOT/XNAT_PYTHON_SCRIPTS/zip_up_a_dicom_dir.pl '+BASE_DIRECTORY+' '+TARGET_ZIP_FILE_NAME+' '
      print system_command,"was the system command"
-#    os.system(system_command)
+     os.system(system_command)
      return
+#    os.path.exists()   will check if a path exist
 
-
-
-#     os.path.exists()   will check if a path exist
-
-
-                                
-                                
-       ## now that I have the list of patients on my hard drive and the list of patients that are in XNAT
+                                     
+## now that I have the list of patients on my hard drive and the list of patients that are in XNAT
 ## I can find the ones I need to upload... and upload em
-
 
 for patients_on_disk in DIRECTORIES_ON_HARD_DRIVE:
     if patients_on_disk not in unique_patient_list_in_xnat:
@@ -128,12 +121,13 @@ for patients_on_disk in DIRECTORIES_ON_HARD_DRIVE:
                 SUBJECT_ID = SUBJECT_ID.group(1)
                 EXPERIMENT_ID=individual_directories
                 TARGET_DIRECTORY=ROOT_DIRECTORY_TO_CHECK+individual_directories
-		TARGET_ZIP_FILE = TARGET_DIRECTORY,".zip"
+		TARGET_ZIP_FILE = TARGET_DIRECTORY+".zip"
 		print TARGET_ZIP_FILE," is the target zip file"
 		if(os.path.exists(TARGET_ZIP_FILE)):
 		    print TARGET_ZIP_FILE+"was already created"
-	            upload_dicom_directory_to_xnat_using_deech_script(SUBJECT_ID,individual_directories,PROJECT_ID,TARGET_DIRECTORY)
+	            upload_dicom_zipdirectory_to_xnat_using_deech_script(SUBJECT_ID,individual_directories,PROJECT_ID,TARGET_ZIP_FILE)
 		else:
+		    print "Creating",TARGET_ZIP_FILE," right now"
 		    create_dicom_directory_zipfile(individual_directories,TARGET_ZIP_FILE)
 	            upload_dicom_zipdirectory_to_xnat_using_deech_script(SUBJECT_ID,individual_directories,PROJECT_ID,TARGET_ZIP_FILE)
 		
