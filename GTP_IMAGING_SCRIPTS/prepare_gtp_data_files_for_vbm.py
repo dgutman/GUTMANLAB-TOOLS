@@ -7,6 +7,7 @@ all of the data I need for a TBS or VBM analysis
 '''
 import os,glob,re , sys, json, urllib, csv
 from pyxnat import Interface
+import shutil
 
 ## so in theory I should be able to pull the scan param I want directly
 ## but for some reason it's not working so I am going to use the JSON hack I got working a while ago
@@ -65,15 +66,6 @@ for individual_image in MANUAL_BET_IMAGE_LIST:
 print len(subjects_with_T1_MPRAGE),"subjects had T1 images in processing directory"
 print len(subjects_with_BET_IMAGE),"subjects had a manual BET Image in processing directory"
 
-for subject in subject_list:
-    subject_label =  project_object.subject(subject).attrs.get('label')
-    if(subject_label not in subject_ignore_list):
-#        subject_label_list.append(subject_label) 
-## I have the subject and subject_label object...
-         print PTSD_DIAGNOSIS[subject_label],"is the PTSD status for subject labeled as",subject_label        
-         print "Should be copying the following file:"+subject_BET_dict_list[subject_label]+"to the vbm directory"
-sys.exit()
-
 
 VBM_OUTPUT_DIRECTORY = '/IMAGING_SCRATCH/RESSLER_TRAUMA_IMAGING/DATA_ANALYSIS/fsl_vbm_ucla_12_15_2011/'
 
@@ -85,19 +77,36 @@ if not os.path.exists(VBM_OUTPUT_DIRECTORY+"/struc"):
 
 
 
+
+for subject in subject_list:
+    subject_label =  project_object.subject(subject).attrs.get('label')
+    if(subject_label not in subject_ignore_list):
+#        subject_label_list.append(subject_label) 
+## I have the subject and subject_label object...
+         print PTSD_DIAGNOSIS[subject_label],"is the PTSD status for subject labeled as",subject_label        
+         print "Should be copying the following file:"+subject_BET_dict_list[subject_label]+"to the vbm directory"
+         if(PTSD_DIAGNOSIS[subject_label] == 'true'):
+	     group_label="PTSD"
+         elif(PTSD_DIAGNOSIS[subject_label] == 'false'):
+	     group_label="CTRL"
+         else:
+	     print "No group label found!!!!! fix this for!!"+subject_label
+	     sys.exit()
+	 output_file_name = group_label+"-"+subject_label+"_struct.nii.gz"
+	 print VBM_OUTPUT_DIRECTORY+output_file_name
+         shutil.copy2(subject_BET_dict_list[subject_label],VBM_OUTPUT_DIRECTORY+output_file_name)
+
+
+sys.exit()
+
 ### 
 #$statement = " cp T1_flipped.nii.gz " . $VBM_OUTPUT_DIRECTORY  . $GROUP_ID_TAG . "-$2" . ".nii.gz";
-#`$statement`;
-
-
 #$statement = " cp  T1_flipped.nii.gz " . $VBM_OUTPUT_DIRECTORY ."struc/" . $GROUP_ID_TAG . "-$2" . "_struc.nii.gz";
-#`$statement`;
 
 ### ALSO COPY THE BRAIN EXTRACTED IMAGES.... THESE WILL BE RECREAETED IF A structural_data/manual_bet/T1_flipped_bet_mask.nii.gz image exists......
 
 ## THIS WILL APPLY FSLMATHS TO THE BET IMAGE AND THEN THE OUTPUT GOES INTO THE FSLVBM DIRECTORY
 #$statement = "fslmaths $CURRENT_DIRECTORY". "/structural_data/T1_flipped.nii.gz " . " -mas $CURRENT_DIRECTORY". "/structural_data/manual_bet/T1_flipped_bet_mask.nii.gz " .  $VBM_OUTPUT_DIRECTORY  . "struc/" . $GROUP_ID_TAG . "-$2" . "_struc_brain.nii.gz";nii.gz " .  $VBM_OUTPUT_DIRECTORY  . "struc/" . $GROUP_ID_TAG . "-$2" . "_struc_brain.nii.gz";
-
 
 ## pss_based_ptsd_diagnosis  THIS DOES NOT WORK FOR A QUERY... MUST BE A BUG
 selection_field_id = 'xnat:subjectData/fields/field[name=pss_based_ptsd_diagnosis_total]/field'
@@ -109,11 +118,4 @@ selection_field_id = 'xnat:subjectData/fields/field[name=pss_based_ptsd_diagnosi
 
 
 sys.exit()
-
-
-### now check the local directory to look for files that have been converted to NIFTI
-
-
-
-### now figure out which patients have T1 MPRAGE images in the processing directory
 

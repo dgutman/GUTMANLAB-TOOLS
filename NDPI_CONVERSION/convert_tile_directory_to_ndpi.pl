@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 use File::Basename;
-$tile_dir_location = "/drobo/40X_Tiles/IMAGING_SCRATCH/CONDR/";
+$tile_dir_location = "/home/dgutman/NDPI_DEMO/";
 
 $big_tif_output = "/IMAGING_SCRATCH/BIG_TIFF_IMAGES/";
 $vips_pyramid_output = "/IMAGING_SCRATCH/PYRAMIDS/";

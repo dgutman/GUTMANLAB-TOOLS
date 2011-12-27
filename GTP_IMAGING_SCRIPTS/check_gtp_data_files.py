@@ -118,7 +118,7 @@ for subject in subject_list:
 
 sys.exit()
 
-ROOT_DIRECTORY_TO_CHECK = '/SGE_RAID/RESSLER_TRAUMA_IMAGING/'
+ROOT_DIRECTORY_TO_CHECK = '/IMAGING_SCRATCH/RESSLER_TRAUMA_IMAGING/'
 T1_IMAGE_LIST = glob.glob(ROOT_DIRECTORY_TO_CHECK+"RESIL*/structural_data/T1_flipped.nii.gz")
 
 
