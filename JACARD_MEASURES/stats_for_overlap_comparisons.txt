@@ -1,0 +1,127 @@
+single_hemisphere_mask.nii.gz; has the following number of voxels;574766
+other_hemisphere_mask.nii.gz; for the OTHER has the following number of voxels--- this is the one I am acutally interested in680292
+Total # of voxels surviving threshold;70693
+Single hemisphere count:;
+34209
+Single hemisphere count:;
+36484
+MEMRI Reference image p val is:;0.95;and using;ob_tractography_binned_5.9_of_10.nii.gz; as the base ;9998
+MEMRI Reference image p val is: ;0.95; and only counting right hemisphere images  ;34209
+MEMRI Reference image p val is: ;0.95; and only counting left  hemisphere images  ;36484
+MEMRI Reference image p val is: ;0.95; and using ;ob_tractography_binned_5.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;277
+MEMRI Reference image p val is: ;0.95; and using ;ob_tractography_binned_5.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;9721
+MEMRI Reference image p val is:;0.95;and using;ob_tractography_binned_6.9_of_10.nii.gz; as the base ;6953
+MEMRI Reference image p val is: ;0.95; and only counting right hemisphere images  ;34209
+MEMRI Reference image p val is: ;0.95; and only counting left  hemisphere images  ;36484
+MEMRI Reference image p val is: ;0.95; and using ;ob_tractography_binned_6.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;42
+MEMRI Reference image p val is: ;0.95; and using ;ob_tractography_binned_6.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;6911
+MEMRI Reference image p val is:;0.95;and using;ob_tractography_binned_7.9_of_10.nii.gz; as the base ;4819
+MEMRI Reference image p val is: ;0.95; and only counting right hemisphere images  ;34209
+MEMRI Reference image p val is: ;0.95; and only counting left  hemisphere images  ;36484
+MEMRI Reference image p val is: ;0.95; and using ;ob_tractography_binned_7.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;7
+MEMRI Reference image p val is: ;0.95; and using ;ob_tractography_binned_7.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;4812
+MEMRI Reference image p val is:;0.95;and using;ob_tractography_binned_8.9_of_10.nii.gz; as the base ;3194
+MEMRI Reference image p val is: ;0.95; and only counting right hemisphere images  ;34209
+MEMRI Reference image p val is: ;0.95; and only counting left  hemisphere images  ;36484
+MEMRI Reference image p val is: ;0.95; and using ;ob_tractography_binned_8.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;0
+MEMRI Reference image p val is: ;0.95; and using ;ob_tractography_binned_8.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;3194
+Total # of voxels surviving threshold;34976
+Single hemisphere count:;
+15433
+Single hemisphere count:;
+19543
+MEMRI Reference image p val is:;0.99;and using;ob_tractography_binned_5.9_of_10.nii.gz; as the base ;8461
+MEMRI Reference image p val is: ;0.99; and only counting right hemisphere images  ;15433
+MEMRI Reference image p val is: ;0.99; and only counting left  hemisphere images  ;19543
+MEMRI Reference image p val is: ;0.99; and using ;ob_tractography_binned_5.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;200
+MEMRI Reference image p val is: ;0.99; and using ;ob_tractography_binned_5.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;8261
+MEMRI Reference image p val is:;0.99;and using;ob_tractography_binned_6.9_of_10.nii.gz; as the base ;6063
+MEMRI Reference image p val is: ;0.99; and only counting right hemisphere images  ;15433
+MEMRI Reference image p val is: ;0.99; and only counting left  hemisphere images  ;19543
+MEMRI Reference image p val is: ;0.99; and using ;ob_tractography_binned_6.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;20
+MEMRI Reference image p val is: ;0.99; and using ;ob_tractography_binned_6.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;6043
+MEMRI Reference image p val is:;0.99;and using;ob_tractography_binned_7.9_of_10.nii.gz; as the base ;4323
+MEMRI Reference image p val is: ;0.99; and only counting right hemisphere images  ;15433
+MEMRI Reference image p val is: ;0.99; and only counting left  hemisphere images  ;19543
+MEMRI Reference image p val is: ;0.99; and using ;ob_tractography_binned_7.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;2
+MEMRI Reference image p val is: ;0.99; and using ;ob_tractography_binned_7.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;4321
+MEMRI Reference image p val is:;0.99;and using;ob_tractography_binned_8.9_of_10.nii.gz; as the base ;2963
+MEMRI Reference image p val is: ;0.99; and only counting right hemisphere images  ;15433
+MEMRI Reference image p val is: ;0.99; and only counting left  hemisphere images  ;19543
+MEMRI Reference image p val is: ;0.99; and using ;ob_tractography_binned_8.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;0
+MEMRI Reference image p val is: ;0.99; and using ;ob_tractography_binned_8.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;2963
+Total # of voxels surviving threshold;27695
+Single hemisphere count:;
+11819
+Single hemisphere count:;
+15876
+MEMRI Reference image p val is:;0.995;and using;ob_tractography_binned_5.9_of_10.nii.gz; as the base ;7934
+MEMRI Reference image p val is: ;0.995; and only counting right hemisphere images  ;11819
+MEMRI Reference image p val is: ;0.995; and only counting left  hemisphere images  ;15876
+MEMRI Reference image p val is: ;0.995; and using ;ob_tractography_binned_5.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;183
+MEMRI Reference image p val is: ;0.995; and using ;ob_tractography_binned_5.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;7751
+MEMRI Reference image p val is:;0.995;and using;ob_tractography_binned_6.9_of_10.nii.gz; as the base ;5752
+MEMRI Reference image p val is: ;0.995; and only counting right hemisphere images  ;11819
+MEMRI Reference image p val is: ;0.995; and only counting left  hemisphere images  ;15876
+MEMRI Reference image p val is: ;0.995; and using ;ob_tractography_binned_6.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;18
+MEMRI Reference image p val is: ;0.995; and using ;ob_tractography_binned_6.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;5734
+MEMRI Reference image p val is:;0.995;and using;ob_tractography_binned_7.9_of_10.nii.gz; as the base ;4109
+MEMRI Reference image p val is: ;0.995; and only counting right hemisphere images  ;11819
+MEMRI Reference image p val is: ;0.995; and only counting left  hemisphere images  ;15876
+MEMRI Reference image p val is: ;0.995; and using ;ob_tractography_binned_7.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;2
+MEMRI Reference image p val is: ;0.995; and using ;ob_tractography_binned_7.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;4107
+MEMRI Reference image p val is:;0.995;and using;ob_tractography_binned_8.9_of_10.nii.gz; as the base ;2838
+MEMRI Reference image p val is: ;0.995; and only counting right hemisphere images  ;11819
+MEMRI Reference image p val is: ;0.995; and only counting left  hemisphere images  ;15876
+MEMRI Reference image p val is: ;0.995; and using ;ob_tractography_binned_8.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;0
+MEMRI Reference image p val is: ;0.995; and using ;ob_tractography_binned_8.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;2838
+Total # of voxels surviving threshold;17257
+Single hemisphere count:;
+6777
+Single hemisphere count:;
+10480
+MEMRI Reference image p val is:;0.999;and using;ob_tractography_binned_5.9_of_10.nii.gz; as the base ;6522
+MEMRI Reference image p val is: ;0.999; and only counting right hemisphere images  ;6777
+MEMRI Reference image p val is: ;0.999; and only counting left  hemisphere images  ;10480
+MEMRI Reference image p val is: ;0.999; and using ;ob_tractography_binned_5.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;141
+MEMRI Reference image p val is: ;0.999; and using ;ob_tractography_binned_5.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;6381
+MEMRI Reference image p val is:;0.999;and using;ob_tractography_binned_6.9_of_10.nii.gz; as the base ;4842
+MEMRI Reference image p val is: ;0.999; and only counting right hemisphere images  ;6777
+MEMRI Reference image p val is: ;0.999; and only counting left  hemisphere images  ;10480
+MEMRI Reference image p val is: ;0.999; and using ;ob_tractography_binned_6.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;8
+MEMRI Reference image p val is: ;0.999; and using ;ob_tractography_binned_6.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;4834
+MEMRI Reference image p val is:;0.999;and using;ob_tractography_binned_7.9_of_10.nii.gz; as the base ;3526
+MEMRI Reference image p val is: ;0.999; and only counting right hemisphere images  ;6777
+MEMRI Reference image p val is: ;0.999; and only counting left  hemisphere images  ;10480
+MEMRI Reference image p val is: ;0.999; and using ;ob_tractography_binned_7.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;0
+MEMRI Reference image p val is: ;0.999; and using ;ob_tractography_binned_7.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;3526
+MEMRI Reference image p val is:;0.999;and using;ob_tractography_binned_8.9_of_10.nii.gz; as the base ;2511
+MEMRI Reference image p val is: ;0.999; and only counting right hemisphere images  ;6777
+MEMRI Reference image p val is: ;0.999; and only counting left  hemisphere images  ;10480
+MEMRI Reference image p val is: ;0.999; and using ;ob_tractography_binned_8.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;0
+MEMRI Reference image p val is: ;0.999; and using ;ob_tractography_binned_8.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;2511
+Total # of voxels surviving threshold;9484
+Single hemisphere count:;
+3400
+Single hemisphere count:;
+6084
+MEMRI Reference image p val is:;0.9999;and using;ob_tractography_binned_5.9_of_10.nii.gz; as the base ;4563
+MEMRI Reference image p val is: ;0.9999; and only counting right hemisphere images  ;3400
+MEMRI Reference image p val is: ;0.9999; and only counting left  hemisphere images  ;6084
+MEMRI Reference image p val is: ;0.9999; and using ;ob_tractography_binned_5.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;128
+MEMRI Reference image p val is: ;0.9999; and using ;ob_tractography_binned_5.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;4435
+MEMRI Reference image p val is:;0.9999;and using;ob_tractography_binned_6.9_of_10.nii.gz; as the base ;3513
+MEMRI Reference image p val is: ;0.9999; and only counting right hemisphere images  ;3400
+MEMRI Reference image p val is: ;0.9999; and only counting left  hemisphere images  ;6084
+MEMRI Reference image p val is: ;0.9999; and using ;ob_tractography_binned_6.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;7
+MEMRI Reference image p val is: ;0.9999; and using ;ob_tractography_binned_6.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;3506
+MEMRI Reference image p val is:;0.9999;and using;ob_tractography_binned_7.9_of_10.nii.gz; as the base ;2596
+MEMRI Reference image p val is: ;0.9999; and only counting right hemisphere images  ;3400
+MEMRI Reference image p val is: ;0.9999; and only counting left  hemisphere images  ;6084
+MEMRI Reference image p val is: ;0.9999; and using ;ob_tractography_binned_7.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;0
+MEMRI Reference image p val is: ;0.9999; and using ;ob_tractography_binned_7.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;2596
+MEMRI Reference image p val is:;0.9999;and using;ob_tractography_binned_8.9_of_10.nii.gz; as the base ;1900
+MEMRI Reference image p val is: ;0.9999; and only counting right hemisphere images  ;3400
+MEMRI Reference image p val is: ;0.9999; and only counting left  hemisphere images  ;6084
+MEMRI Reference image p val is: ;0.9999; and using ;ob_tractography_binned_8.9_of_10.nii.gz; as the base and masking the RIGHT hemisphere ;0
+MEMRI Reference image p val is: ;0.9999; and using ;ob_tractography_binned_8.9_of_10.nii.gz; as the base and masking the LEFT  hemisphere ;1900

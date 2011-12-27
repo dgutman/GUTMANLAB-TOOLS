@@ -1,0 +1,2 @@
+$ matlab -nodesktop -nosplash -r "filename1='composite_image_thrP.1_s1.nii';filename2='pval_convt_Full_E_swapped_to_STD_masked.nii';filename1;filename2;JaccardIndex(filename1,filename2);exit;"
+
