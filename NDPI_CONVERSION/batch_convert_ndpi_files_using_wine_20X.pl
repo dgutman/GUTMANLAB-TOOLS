@@ -1,27 +1,15 @@
 #!/usr/bin/perl
 use File::Basename;
 
-
-$CLEANUP_TILES = 0;  ### If the pyramidal tiff alraedy exists, I may want to go ahead and delete the TILED and/or BIG TIFF Version of the image... probably for now not the
-### big tiff versionas I am still playing around with different ways to transcode the images.....
-
-
-### CONDOR VESION
-$directory_to_transcode = "/var/www/CONDR/NDPI_IMAGES/";   ## Contains the raw NDPI IMAGES
-$TILE_BASE_DIRECTORY = "/home/dgutman/TILE_CACHE/";  ### These contain the 4kx4k tiles that are split using NDPIUt9ilities
-$big_tif_output = "/home/dgutman/BIG_TIFF_IMAGES/CONDR/";
-$PYRAMID_FILE_LOCATION_BASE = "/var/www/CONDR/CONDR_PYRAMIDS/";
-
-
-#### ADRC VERSION...
 $directory_to_transcode = "/var/www/ADRC/TRAINING_SLIDES/";   ## Contains the raw NDPI IMAGES
-$TILE_BASE_DIRECTORY = "/home/dgutman/TILE_CACHE/";  ### These contain the 4kx4k tiles that are split using NDPIUt9ilities
-$big_tif_output = "/var/www/ADRC/BIG_TIFF_IMAGES/";
-$PYRAMID_FILE_LOCATION_BASE = "/var/www/ADRC/ZOOMIFY_FULL_PYRAMIDS/TRAINING_SLIDES/";
+$TILE_BASE_DIRECTORY = "/home/dgutman/TILE_CACHE_20X/";  ### These contain the 4kx4k tiles that are split using NDPIUt9ilities
+$big_tif_output = "/home/dgutman/BIG_TIFF_IMAGES/TRAINING_SLIDES_20X/";
+
+$PYRAMID_FILE_LOCATION_BASE = "/var/www/ADRC/ZOOMIFY_FULL_PYRAMIDS/TRAINING_SLIDES_20X/";
 
 @NDPI_FILES = `find $directory_to_transcode -name '*.ndpi'`;
 
-$tile_resolution=40;
+$tile_resolution=20;
 $tile_size=4096;
 
 
@@ -57,14 +45,12 @@ $file =~ s/\.ndpi//;
 $TILE_ROOT = $file;
 $VIPS_IMAGE_NAME = $TILE_ROOT . ".dzi.tif";
 $VIPS_IMAGE_NAME =  $PYRAMID_FILE_LOCATION_BASE . $VIPS_IMAGE_NAME;
+
 $tile_output_directory = $TILE_BASE_DIRECTORY  .  $file;
 
 
 if( ! -e $VIPS_IMAGE_NAME)
 	{
-
-
-
 	print "File $file has not been pyramidized... no image found in $VIPS_IMAGE_NAME\n";
 	print "Will now see if BIG_TIFF image file  exists..\n"; 
 	## order is  Tiles -->  Big Tiff -->  Pyramidal TIFF
@@ -92,11 +78,6 @@ if( ! -e $VIPS_IMAGE_NAME)
 else
 	{
 ## case where VIPS image is already created..
-	print "VIPS IMAGE $VIPS_IMAGE already created.... \n";
-
-	$do_cleanup = 0;
-	if($do_cleanup)  {  `rm -rf $tile_output_directory` ; print "Cleaned up output directory for tile..which is $tile_output_directory \n"; }
-
 
 	}
 

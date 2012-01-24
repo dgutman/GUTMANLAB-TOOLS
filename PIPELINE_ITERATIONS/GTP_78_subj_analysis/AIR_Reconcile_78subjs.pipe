@@ -1,0 +1,778 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline version=".1">
+        <connections>
+                <connection source="AlignLinearReconcileandDefineCommon_1.OutputAIRfiles" sink="Reslice_1.Input.airLinearTransformation" />
+                <connection source="BiasFieldCorrector_1.OutputFile" sink="ImageHistogramEqualize_1.Imagestoequalize" />
+                <connection source="AlignLinearwrapper_1.StartcommandtoReconcile" sink="AIRreconcile_1.StartcommandfromAlignLinear2" />
+                <connection source="AIRreconcile_1.StartcommandtoDefineCommon1" sink="SaveCommonAIRfiles_1.Start" />
+                <connection source="ImageHistogramEqualize_1.EqualizedImage" sink="AlignLinearReconcileandDefineCommon_1.StandardVolume" />
+                <connection source="ImageHistogramEqualize_1.EqualizedImage" sink="AlignLinearReconcileandDefineCommon_1.ResliceVolume" />
+                <connection source="ImageHistogramEqualize_1.EqualizedImage" sink="AlignLinearReconcileandDefineCommon_1.Usedtodeterminefilepath" />
+                <connection source="ImageHistogramEqualize_1.EqualizedImage" sink="AlignLinearReconcileandDefineCommon_1.Nooffiles" />
+                <connection source="Reslice_1.OutputReslicedVolume" sink="HardMean_1.InputFiles" />
+                <connection source="AlignLinearReconcileandDefineCommon_1.OutputAIRfiles" sink="Savecommonairfiles_1.Input" />
+                <connection source="Reslice_1.OutputReslicedVolume" sink="ReslicedVolumestocommonspace_1.Input" />
+                <connection source="HardMean_1.HardMean" sink="Meanimage_1.Input" />
+                <connection source="Rawdata_1.Output" sink="BiasFieldCorrector_1.InputFile" />
+        </connections>
+        <moduleGroup id="AIRReconcile_1" name="AIR Reconcile" package="Minimum Distance Template" posX="0" posY="0">
+                <authors>
+                        <author fullName="Boris Gutman" email="" website="" />
+                        <author fullName="Claus Svarer" email="" website="" />
+                </authors>
+                <uri>http://www.loni.ucla.edu/twiki/bin/view/CCB/SIGPNS_Summer2009_BG_CS_2</uri>
+                <dataModule id="Rawdata_1" name="Raw data" package="LONI" version="1.0" posX="55" posY="2" type="File" source="true" loopIndex="false">
+                        <fileTypes>
+                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                        <need>hdr</need>
+                                </filetype>
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Nov 06 18:12:50 PST 2009" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10036-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10048-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10065-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10072-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10086-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10103-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10169-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10230-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10239-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10244-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10343-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10357-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10374-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/6610-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/6753-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/6824-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7373-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7422-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7464-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7470-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7555-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7614-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7618-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7806-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7807-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7810-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8025-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8155-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8167-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8178-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8382-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8383-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8453-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8489-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8496-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8518-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8543-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8593-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8595-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8798-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8855-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8857-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8871-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8883-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8897-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8940-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8982-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8985-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8993-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9035-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9080-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9083-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9176-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9185-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9197-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9215-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9233-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9251-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9264-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9268-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9292-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9295-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9350-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9449-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9465-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9470-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9522-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9647-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9666-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9746-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9752-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9764-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9780-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9884-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9894-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9929-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9960-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9989-T1_flipped.img</value>
+                        </values>
+                        <output id="Rawdata_1.Output" name="Output" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                </dataModule>
+                <module id="Reslice_1" name="Reslice" package="AIR" version="5.2.5" description="An AIR linear transformation is applied to a Volume to bring it from the compatible source space to the target space specified within the transform.&#xA;&#xA;64-bit compilation&#xA;16-bit output" location="pipeline://cranium.loni.ucla.edu//usr/local/loniWorkflows/MinimumDistanceTemplate/csvarer/reslice" sourceCode="" icon="/9j/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAx&#xA;NDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIy&#xA;MjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAAUCAA4ADgEASIAAhEBAxEBBCIA/8QAHwAAAQUB&#xA;AQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEG&#xA;E1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVW&#xA;V1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLD&#xA;xMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAA&#xA;AAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKR&#xA;obHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hp&#xA;anN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU&#xA;1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADgQBAAIRAxEEAAA/APn+iivpD/hCvAmmJ/Z+s+HP&#xA;Pv7W2jkupoLyYRPMQochAygDcey8DHA6VE5xgryHGLlsfP8ARRXbaN4Lg1WK3JmaN2h3uMZGT0/m&#xA;K+b6K+j4PCXwxigWJtAlneO1VjLJeS7pDj+IKwAJwOgA54ApieC/hpmENo9ywBkuWLXkmWBDkRsc&#xA;/dAYYOQ3yrkn5t0+3p9yvZy7HE0V6nD8I5pBCwuNwKkvgfl/Snx/B+5PkbpSckl+Oo5xXznRX0cn&#xA;g/4avPC50acFzLPIFunUOG34jIBA2DIxjB+Vck85w9R8CaFcXs174W1KDSLgweXFaXiO0aMflZ1m&#xA;U71O0k/MHGc84xhqrBuyYOnJdDymivVU+D9yRDmU8ud3HVaw9Y+GWrWDM1viVOwIwa8Nor0HWfhd&#xA;4w01llt9OTULYhIBc6UBcoxKYJwMyAYBySoGenUZK0IOGoq3d6beWLbbm3kjPTJXj86KydCiivPE&#xA;OjWWoQSPaPdQrdmQFswvsLBSOVURoSCuDg9cV7Lrd+l1dardYYJPLlXIwNgJ5/8AQa8s8Cvatql5&#xA;NdRXD3kUZlZnOVdCwDbuM7t2O/UtXbzeILiOCJUijZmYjLDoe1KpQjUinIUazhKyGWlrPfXkVrbR&#xA;PLPK4RI0GSxPYV9DaJ4E1axgZ2SEkIqLGsnzDH6frXmvwYS3fx+nnbd620hi3f3uOnvjP619NWq/&#xA;KPc0+7Kv9qkibKkJGjDuPb/vmlnBjN4QT+7jWIfXj/A03S08+wsiQAZpTIQBgAf5zVgJ5yD/AKb3&#xA;OfwH/wCs140/dk4noxfMkzndPiMZKkEMihSD2NaJ/i/KpbxFXUJSB97BPHtUPp7moZFMbz8n9zbq&#xA;nXucD/GsK8LKJjuPyxgde9dDMN0M7/8APWfH4D/9dYV1GZhsHWaYJ/n86cHeQNaCnv7DFYOtSYim&#xA;98LW6TwT71y2sSZVB/eYk1v/AA13j4g27T3jRW9tZgS+ZNtV5HKqgOepLPgA9TgUVz2oSwW/gDxX&#xA;ezpN/wATC8trCJ0AwAH81snPTahHGeSPrRXq0vhOKp8R5l4xvfIW6lGCUCoPc5H+NFYPja632+M/&#xA;66ct+A//AF0VJ8KtNt2i8V6hFc4ggt1to7dkJLLIyskjHpnEOMerH7vea4Rb7UPKg2pLJ0R+BuPo&#xA;awbXxlp3hnRf7M0WO6eK4hWS8edisrSjeAPL5VVwVOVPCsuSxBqJ/EAiuU1FZJYlhkUjz4WXJ6js&#xA;R68A5+U9ua6Fbltc55J817CfClGPj+wlXP7snp7jH8s19VwYRAzHAVck18neD/GVp4PkkuINI+13&#xA;jjHnSz7do9FUKcfXNd7a/HW3n3Jf6VNGrDafLlDDH4gV6XbaLc2sUEYQnybckH3Of8aki0q5Q237&#xA;s/u42f6k5P8AhVS5+LEMukapKurpbamtqYooTZiWHz+qvnYOTjALOYxkHBxzyv8AwunxV9ueAxwS&#xA;edpyW8Ae0SPzJiF/0lif+BED7mMfKOSPLlgpOTbkdscRZWsesS6razzNJ56fPkrz2qMajaHbidOR&#xA;kc188+I9f02RnutA1u/iLLtNpOhIUeitj+f51zQ8T60CMahNwmwc9q6+TSLv7NAixEsQzYx1JOP6&#xA;VEngrWCgvJYo7e2tkeV5rhxGi4BJJJ6AYySfSuOn+N/i28t7bbPaadLG4WSW2tY98sZGNxEu4Egj&#xA;PG0c/ly1xdXXiGe2llvNTvtcA2RR6hMZNygEkjcAEXO4j5icjpzmrp4NRd2wlXb2R9TXGqWaWxY3&#xA;CAEEDJrg/EXinSIAwa/iDKhUDPOfpXiE+u6pcxLFLezMijAG7HFZxJJySSfeum8Y6jY6foul+HbT&#xA;VLTVY4r2W71OO1yYtzKixDzQvOFaQfKTznPIFFeV0V2JWVjBu7ubniPU4NRuIRbuWSNSCSMZJNFY&#xA;VFFFFFMQUUUUUUUUAFFFFFFFFABRRRRRRRQAUUUV/9k=" posX="179" posY="534" rotation="1">
+                        <authors>
+                                <author fullName="Allan MacKenzie-Graham" email="amg@ucla.edu" website="" />
+                                <author fullName="Arash Payan" email="apayan@loni.ucla.edu" website="" />
+                        </authors>
+                        <executableAuthors>
+                                <author fullName="Roger P. Woods" email="rwoods@ucla.edu" website="" />
+                        </executableAuthors>
+                        <license>http://www.loni.ucla.edu/Software/license.php
+
+By registering for downloads from the UCLA Laboratory of Neuro Imaging, you are agreeing to the following terms and conditions as well as to the Terms of Use of the LONI website. To view the LONI website's Terms of Use go to, http://www.loni.ucla.edu/software/termsofuse.php.
+
+    * Permission is granted to use this software without charge for non-commercial research purposes only.
+    * Other than the rights granted herein, LONI retains all rights, title, and interest in LONI software and Technology, and You retain all rights, title, and interest in Your Modifications and associated specifications, subject to the terms of this License.
+    * You may make verbatim copies of this software for personal use, or for use within your organization, provided that you duplicate all of the original copyright notices and associated disclaimers. If you provide the use of the software to other users within your organization, they also must comply with all the terms of this Software Distribution Agreement.
+    * YOU MAY NOT DISTRIBUTE COPIES of this software, or copies of software derived from this software, to others outside your organization without specific prior written permission from the UCLA Laboratory of Neuro Imaging, except where noted for specific software products.
+    * You must not remove or alter any copyright or other proprietary notices in the software.
+    * Software has not been reviewed or approved by the Food and Drug Administration, and is for non-clinical, IRB-approved Research Use Only. In no event shall data or images generated through the use of the Software be used in the provision of patient care.
+    * THE SOFTWARE IS PROVIDED "AS IS," AND THE UNIVERSITY OF CALIFORNIA AND ITS COLLABORATORS DO NOT MAKE ANY WARRANTY, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, NOR DO THEY ASSUME ANY LIABILITY OR RESPONSIBILITY FOR THE USE OF THIS SOFTWARE.
+    * This software is for research purposes only and has not been approved for clinical use.
+    * You may publish papers and books using results produced using software provided by this site provided that you reference the appropriate citations. A list of citations is available here.
+    * You agree to comply with LONI's Trademark Usage Requirements, as modified from time to time, described in the "Use of Materials Limitations" section of the LONI Terms of Use Agreement. Except as expressly provided in this License, you are granted no rights in or to any LONI trademarks now or hereafter used or licensed by LONI.
+
+    * All Technology and technical data delivered under this Agreement are subject to US export control laws and may be subject to export or import regulations in other countries. You agree to comply strictly with all such laws and regulations and acknowledge that you have the responsibility to obtain such licenses to export, re-export, or import as may be required after delivery to you.</license>
+                        <tag>matrix multiplication</tag>
+                        <tag>reslice</tag>
+                        <tag>air file</tag>
+                        <uri>http://bishopw.loni.ucla.edu/AIR5/reslice.html</uri>
+                        <metadata>
+                                <data key="__creationDateKey" value="Mon Sep 11 18:44:03 PDT 2006" />
+                        </metadata>
+                        <input id="Reslice_1.Input.airLinearTransformation" name="Input (.air Linear Transformation)" description="Defines the source space and the target space for the source volume to transformed into.  The source space and the source volume must possess compatible dimensions and should be of the same space." required="true" enabled="true" order="0">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="AIR file" extension="air" description="AIR Linear transformation" />
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <output id="Reslice_1.OutputReslicedVolume" name="Output (Resliced Volume)" description="A new volume created by the application of the given transform to the given volume in the target space provided by the transform." required="true" enabled="true" order="1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <input id="Reslice_1.AlternateResliceFile" name="Alternate Reslice File" description="A volume compatible with the source space in the transform file that is to be converted to the target space provided by the transform." required="false" enabled="false" order="2" prefix="-a" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <input id="Reslice_1.DividebyIntensityScaleFactor" name="Divide by Intensity Scale Factor" description="Change the output intensities of the produced volume by dividing by this scale factor." required="false" enabled="false" order="3" prefix="-d" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <input id="Reslice_1.DividebyIntensityScaleFactorFile" name="Divide by Intensity Scale Factor File" description="scales output by dividing by factor specified in the ASCII file. The file must contain a single positive number" required="false" enabled="false" order="4" prefix="-df" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Text file" extension="txt" description="Text file" />
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <input id="Reslice_1.RetainStandardVolumesVoxelDimensions" name="Retain Standard Volume's Voxel Dimensions" description="Does not allow cubic interpolation of voxels in the target space, but instead retains the voxel dimensions of the standard file that defines the target space." required="false" enabled="false" order="5" prefix="-k" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="String" cardinality="0" />
+                        </input>
+                        <input id="Reslice_1.InterpolationModel2,3,4" name="Interpolation Model 2,3,4" description="The type of interpolation to be used to create the new volume:&#xA;&#xA;2: Windowed sinc in the original XY plane, linear along Z.  (requires the X- and Y-half-window-widths be provided).&#xA;3: Windowed sinc in the original XZ plane, linear along Y.  (requires the X- and Z-half-window-widths be provided).&#xA;4: Windowed sinc in the original YZ plane, linear along X.  (requires the Y- and Z-half-window-widths be provided).&#xA;" required="false" enabled="false" order="6" prefix="-n" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Enumerated" cardinality="1">
+                                        <enumeration>2</enumeration>
+                                        <enumeration>3</enumeration>
+                                        <enumeration>4</enumeration>
+                                </format>
+                                <dependencies>
+                                        <dependent>Half-window-width values for Interpolation Models 2-4</dependent>
+                                        <dependsOn>Half-window-width values for Interpolation Models 2-4</dependsOn>
+                                </dependencies>
+                        </input>
+                        <input id="Reslice_1.Overwrite" name="Overwrite" description="grants permission to overwrite output" required="false" enabled="true" order="11" prefix="-o" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="String" cardinality="0" />
+                        </input>
+                        <input id="Reslice_1.MultiplybyIntensityScaleFactor" name="Multiply by Intensity Scale Factor" description="Change the output intensities of the produced volume by mutiplying by this scale factor." required="false" enabled="false" order="12" prefix="-s" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <input id="Reslice_1.MultiplicativeIntensityScaleFactorFile" name="Multiplicative Intensity Scale Factor File" description="output intensities are multiplied by the value in this ASCII file containing a single positive number " required="false" enabled="false" order="13" prefix="-sf" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Text file" extension="txt" description="Text file" />
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <input id="Reslice_1.AlternateX-dimensionsizeshift" name="Alternate X-dimension/size/shift" description="the shift (in voxels) to be applied along the X dimension, with positive and negative values causing shifts in opposite directions &#xA;&#xA;OR&#xA;&#xA;the new desired voxel size along the X dimension (in whatever unit was used for sizes in your image files, usually millimeters) &#xA;" required="false" enabled="false" order="14" prefix="-x" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <input id="Reslice_1.AlternateY-dimensionsizeshift" name="Alternate Y-dimension/size/shift" description="the shift (in voxels) to be applied along the Y dimension, with positive and negative values causing shifts in opposite directions &#xA;&#xA;OR&#xA;&#xA;the new desired voxel size along the Y dimension (in whatever unit was used for sizes in your image files, usually millimeters) &#xA;" required="false" enabled="false" order="15" prefix="-y" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <input id="Reslice_1.AlternateZ-dimensionsizeshift" name="Alternate Z-dimension/size/shift" description="the shift (in voxels) to be applied along the Z dimension, with positive and negative values causing shifts in opposite directions &#xA;&#xA;OR&#xA;&#xA;the new desired voxel size along the Z dimension (in whatever unit was used for sizes in your image files, usually millimeters) &#xA;" required="false" enabled="false" order="16" prefix="-z" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <input id="Reslice_1.Half-window-widthvaluesforInterpolationModels2-4" name="Half-window-width values for Interpolation Models 2-4" required="false" enabled="false" order="9">
+                                <format type="Number" cardinality="2" />
+                                <dependencies>
+                                        <dependent>Interpolation Model 2,3,4</dependent>
+                                        <dependsOn>Interpolation Model 2,3,4</dependsOn>
+                                </dependencies>
+                        </input>
+                        <input id="Reslice_1.InterpolationModel0,1,7,10-13" name="Interpolation Model 0, 1, 7, 10-13" description="The type of interpolation to be used to create the new volume:&#xA;&#xA;0:  Nearest neighbor (should be used for enumerated value files where only specific values have meanings and should be available).&#xA;1: Trilinear&#xA;7: 3D unwindowed scanline sinc.&#xA;10: 3D scanline chirp-z.&#xA;11: scanline chirp-z in the original XY plane, linear along the Z-axis.&#xA;12: scanline chirp-z in the original XZ plane, linear along the Y-axis.&#xA;13: scanline chirp-z in the original YZ plane, linear along the X-axis." required="false" enabled="false" order="8" prefix="-n" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Enumerated" cardinality="1">
+                                        <enumeration>0</enumeration>
+                                        <enumeration>1</enumeration>
+                                        <enumeration>7</enumeration>
+                                        <enumeration>10</enumeration>
+                                        <enumeration>11</enumeration>
+                                        <enumeration>12</enumeration>
+                                        <enumeration>13</enumeration>
+                                </format>
+                        </input>
+                        <input id="Reslice_1.InterpolationModel5,6" name="Interpolation Model 5,6" description="The type of interpolation to be used to create the new volume:&#xA;&#xA;5: 3D windowed sinc.  (requires the X-, Y-, and Z-half-window-widths be provided).&#xA;6: 3D windowed scanline sinc.  (requires the X-, Y-, and Z-half-window-widths be provided).&#xA;" required="false" enabled="false" order="7" prefix="-n" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Enumerated" cardinality="1">
+                                        <enumeration>5</enumeration>
+                                        <enumeration>6</enumeration>
+                                </format>
+                                <dependencies>
+                                        <dependent>Half-window-width values for Interpolation Models 5,6</dependent>
+                                        <dependsOn>Half-window-width values for Interpolation Models 5,6</dependsOn>
+                                </dependencies>
+                        </input>
+                        <input id="Reslice_1.Half-window-widthvaluesforInterpolationModels5,6" name="Half-window-width values for Interpolation Models 5,6" required="false" enabled="false" order="10">
+                                <format type="Number" cardinality="3" />
+                                <dependencies>
+                                        <dependent>Interpolation Model 5,6</dependent>
+                                        <dependsOn>Interpolation Model 5,6</dependsOn>
+                                </dependencies>
+                        </input>
+                </module>
+                <module id="ImageHistogramEqualize_1" name="Image Histogram Equalize" package="Minimum Distance Template" version="1.0" description="It inensity scales all the images to have same intensity distribution as first input image" location="pipeline://cranium.loni.ucla.edu//usr/bin/perl" sourceCode="" icon="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&#xA;4aN/91hkH6daKKK//9k=" posX="44" posY="208" gridVariables="h_stack=128;h_vmem=4">
+                        <uri>http://pipeline.loni.ucla.edu/</uri>
+                        <metadata>
+                                <data key="__creationDateKey" value="Tue Nov 10 12:09:20 PST 2009" />
+                        </metadata>
+                        <input id="ImageHistogramEqualize_1.Imagestoequalize" name="Images to equalize" required="true" enabled="true" order="1">
+                                <format type="File" cardinality="-1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image 3D" extension="img" description="Analyze Image 3D file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <output id="ImageHistogramEqualize_1.EqualizedImage" name="Equalized Image" required="true" enabled="true" order="2">
+                                <format type="File" cardinality="-2" cardinalityBase="Images to equalize">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image 3D" extension="img" description="Analyze Image 3D file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <input id="ImageHistogramEqualize_1.PerlScript" name="Perl Script" required="true" enabled="true" order="0" prefix="-w" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="File" extension="" description="Any type of data file" />
+                                        </fileTypes>
+                                </format>
+                                <values>
+                                        <value>pipeline://cranium.loni.ucla.edu/csvarer/ImgHistEq.pl</value>
+                                </values>
+                        </input>
+                </module>
+                <moduleGroup id="AlignLinearReconcileandDefineCommon_1" name="AlignLinear, Reconcile, and DefineCommon" icon="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&#xA;4aN/91hkH6daKKK//9k=" posX="37" posY="357">
+                        <module id="AlignLinearwrapper_1" name="Align Linear wrapper" package="AIR" version="5.2.5_16" description="This is a general linear intramodality registration tool (within or across subjects, 2D or 3D). The user can specify any of a variety of models, including rigid-body, affine, or perspective.&#xA;&#xA;The program will generate a .air file that can be used to reslice the specified reslice data set to match the specified standard data set.&#xA;&#xA;64-bit compilation" location="pipeline://cranium.loni.ucla.edu//usr/bin/perl" sourceCode="" icon="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" posX="0" posY="20" executableVersion="5.2.5_16">
+                                <authors>
+                                        <author fullName="Allan MacKenzie-Graham" email="" website="" />
+                                        <author fullName="Arash Payan" email="apayan@loni.ucla.edu" website="" />
+                                </authors>
+                                <executableAuthors>
+                                        <author fullName="Roger P. Woods" email="rwoods@ucla.edu" website="http://bishopw.loni.ucla.edu" />
+                                </executableAuthors>
+                                <license>http://www.loni.ucla.edu/Software/license.php
+
+By registering for downloads from the UCLA Laboratory of Neuro Imaging, you are agreeing to the following terms and conditions as well as to the Terms of Use of the LONI website. To view the LONI website's Terms of Use go to, http://www.loni.ucla.edu/software/termsofuse.php.
+
+    * Permission is granted to use this software without charge for non-commercial research purposes only.
+    * Other than the rights granted herein, LONI retains all rights, title, and interest in LONI software and Technology, and You retain all rights, title, and interest in Your Modifications and associated specifications, subject to the terms of this License.
+    * You may make verbatim copies of this software for personal use, or for use within your organization, provided that you duplicate all of the original copyright notices and associated disclaimers. If you provide the use of the software to other users within your organization, they also must comply with all the terms of this Software Distribution Agreement.
+    * YOU MAY NOT DISTRIBUTE COPIES of this software, or copies of software derived from this software, to others outside your organization without specific prior written permission from the UCLA Laboratory of Neuro Imaging, except where noted for specific software products.
+    * You must not remove or alter any copyright or other proprietary notices in the software.
+    * Software has not been reviewed or approved by the Food and Drug Administration, and is for non-clinical, IRB-approved Research Use Only. In no event shall data or images generated through the use of the Software be used in the provision of patient care.
+    * THE SOFTWARE IS PROVIDED "AS IS," AND THE UNIVERSITY OF CALIFORNIA AND ITS COLLABORATORS DO NOT MAKE ANY WARRANTY, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, NOR DO THEY ASSUME ANY LIABILITY OR RESPONSIBILITY FOR THE USE OF THIS SOFTWARE.
+    * This software is for research purposes only and has not been approved for clinical use.
+    * You may publish papers and books using results produced using software provided by this site provided that you reference the appropriate citations. A list of citations is available here.
+    * You agree to comply with LONI's Trademark Usage Requirements, as modified from time to time, described in the "Use of Materials Limitations" section of the LONI Terms of Use Agreement. Except as expressly provided in this License, you are granted no rights in or to any LONI trademarks now or hereafter used or licensed by LONI.
+
+    * All Technology and technical data delivered under this Agreement are subject to US export control laws and may be subject to export or import regulations in other countries. You agree to comply strictly with all such laws and regulations and acknowledge that you have the responsibility to obtain such licenses to export, re-export, or import as may be required after delivery to you.</license>
+                                <tag>registration</tag>
+                                <tag>linear</tag>
+                                <uri>http://bishopw.loni.ucla.edu/AIR5/alignlinear.html</uri>
+                                <metadata>
+                                        <data key="__creationDateKey" value="Mon Aug 28 12:14:19 PDT 2006" />
+                                </metadata>
+                                <input id="AlignLinearwrapper_1.StandardVolume" name="Standard Volume" description="The atlas that  the input file is resliced to match. " required="true" enabled="true" order="1">
+                                        <format type="File" cardinality="1">
+                                                <fileTypes>
+                                                        <filetype name="Analyze Image" extension="img" description="Analyze Image file">
+                                                                <need>hdr</need>
+                                                        </filetype>
+                                                </fileTypes>
+                                        </format>
+                                </input>
+                                <input id="AlignLinearwrapper_1.ResliceVolume" name="Reslice Volume" description="The input being registered to the  standard-file." required="true" enabled="true" order="2">
+                                        <format type="File" cardinality="-1">
+                                                <fileTypes>
+                                                        <filetype name="Analyze Image" extension="img" description="Analyze Image file">
+                                                                <need>hdr</need>
+                                                        </filetype>
+                                                </fileTypes>
+                                        </format>
+                                </input>
+                                <output id="AlignLinearwrapper_1.LinearTransformation" name="Linear Transformation" description="Resultant linear spatial transformation matrix saved as a .air file" required="true" enabled="true" order="3">
+                                        <format type="File" cardinality="-2" cardinalityBase="Reslice Volume">
+                                                <fileTypes>
+                                                        <filetype name="AIR file" extension="air" description="AIR Linear transformation" />
+                                                </fileTypes>
+                                        </format>
+                                </output>
+                                <output id="AlignLinearwrapper_1.StartcommandtoReconcile" name="Start command to Reconcile" required="true" enabled="true" order="4">
+                                        <format type="Flow Control" cardinality="1" />
+                                </output>
+                                <input id="AlignLinearwrapper_1.PerlScript" name="Perl Script" required="true" enabled="true" order="0">
+                                        <format type="File" cardinality="1">
+                                                <fileTypes>
+                                                        <filetype name="File" extension="" description="Any type of data file" />
+                                                </fileTypes>
+                                        </format>
+                                        <values>
+                                                <value>pipeline://cranium.loni.ucla.edu/bin/AIR.pl</value>
+                                        </values>
+                                </input>
+                        </module>
+                        <module id="AIRreconcile_1" name="AIR reconcile" package="AIR" version="5.2.5_16" location="pipeline://cranium.loni.ucla.edu//usr/bin/perl" sourceCode="" icon="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&#xA;iiiigAooooooooAKKKK//9k=" posX="198" posY="190" executableVersion="5.2.5_16">
+                                <license>http://www.loni.ucla.edu/Software/license.php
+
+By registering for downloads from the UCLA Laboratory of Neuro Imaging, you are agreeing to the following terms and conditions as well as to the Terms of Use of the LONI website. To view the LONI website's Terms of Use go to, http://www.loni.ucla.edu/software/termsofuse.php.
+
+    * Permission is granted to use this software without charge for non-commercial research purposes only.
+    * Other than the rights granted herein, LONI retains all rights, title, and interest in LONI software and Technology, and You retain all rights, title, and interest in Your Modifications and associated specifications, subject to the terms of this License.
+    * You may make verbatim copies of this software for personal use, or for use within your organization, provided that you duplicate all of the original copyright notices and associated disclaimers. If you provide the use of the software to other users within your organization, they also must comply with all the terms of this Software Distribution Agreement.
+    * YOU MAY NOT DISTRIBUTE COPIES of this software, or copies of software derived from this software, to others outside your organization without specific prior written permission from the UCLA Laboratory of Neuro Imaging, except where noted for specific software products.
+    * You must not remove or alter any copyright or other proprietary notices in the software.
+    * Software has not been reviewed or approved by the Food and Drug Administration, and is for non-clinical, IRB-approved Research Use Only. In no event shall data or images generated through the use of the Software be used in the provision of patient care.
+    * THE SOFTWARE IS PROVIDED "AS IS," AND THE UNIVERSITY OF CALIFORNIA AND ITS COLLABORATORS DO NOT MAKE ANY WARRANTY, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, NOR DO THEY ASSUME ANY LIABILITY OR RESPONSIBILITY FOR THE USE OF THIS SOFTWARE.
+    * This software is for research purposes only and has not been approved for clinical use.
+    * You may publish papers and books using results produced using software provided by this site provided that you reference the appropriate citations. A list of citations is available here.
+    * You agree to comply with LONI's Trademark Usage Requirements, as modified from time to time, described in the "Use of Materials Limitations" section of the LONI Terms of Use Agreement. Except as expressly provided in this License, you are granted no rights in or to any LONI trademarks now or hereafter used or licensed by LONI.
+
+    * All Technology and technical data delivered under this Agreement are subject to US export control laws and may be subject to export or import regulations in other countries. You agree to comply strictly with all such laws and regulations and acknowledge that you have the responsibility to obtain such licenses to export, re-export, or import as may be required after delivery to you.</license>
+                                <uri>http://bishopw.loni.ucla.edu/AIR5/</uri>
+                                <metadata>
+                                        <data key="__creationDateKey" value="Mon Nov 09 14:57:04 PST 2009" />
+                                </metadata>
+                                <input id="AIRreconcile_1.Usedtodeterminefilepath" name="Used to determine file path" required="true" enabled="true" order="1">
+                                        <format type="File" cardinality="-1">
+                                                <fileTypes>
+                                                        <filetype name="Analyze Image 3D" extension="img" description="Analyze Image 3D file">
+                                                                <need>hdr</need>
+                                                        </filetype>
+                                                </fileTypes>
+                                        </format>
+                                </input>
+                                <output id="AIRreconcile_1.StartcommandtoDefineCommon1" name="Start command to DefineCommon1" required="true" enabled="true" order="3">
+                                        <format type="Flow Control" cardinality="1" />
+                                </output>
+                                <input id="AIRreconcile_1.StartcommandfromAlignLinear2" name="Start command from AlignLinear2" required="true" enabled="true" order="2">
+                                        <format type="Flow Control" cardinality="1" />
+                                </input>
+                                <input id="AIRreconcile_1.PerlScript" name="Perl Script" required="true" enabled="true" order="0">
+                                        <format type="File" cardinality="1">
+                                                <fileTypes>
+                                                        <filetype name="File" extension="" description="Any type of data file" />
+                                                </fileTypes>
+                                        </format>
+                                        <values>
+                                                <value>pipeline://cranium.loni.ucla.edu/bin/RECONCILE.pl</value>
+                                        </values>
+                                </input>
+                        </module>
+                        <module id="SaveCommonAIRfiles_1" name="Save Common AIR files" package="Minimum Distance Template" version="1.0" location="pipeline://cranium.loni.ucla.edu//usr/bin/perl" sourceCode="" icon="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&#xA;4aN/91hkH6daKKK//9k=" posX="376" posY="324">
+                                <license>http://www.loni.ucla.edu/Software/license.php
+
+By registering for downloads from the UCLA Laboratory of Neuro Imaging, you are agreeing to the following terms and conditions as well as to the Terms of Use of the LONI website. To view the LONI website's Terms of Use go to, http://www.loni.ucla.edu/software/termsofuse.php.
+
+    * Permission is granted to use this software without charge for non-commercial research purposes only.
+    * Other than the rights granted herein, LONI retains all rights, title, and interest in LONI software and Technology, and You retain all rights, title, and interest in Your Modifications and associated specifications, subject to the terms of this License.
+    * You may make verbatim copies of this software for personal use, or for use within your organization, provided that you duplicate all of the original copyright notices and associated disclaimers. If you provide the use of the software to other users within your organization, they also must comply with all the terms of this Software Distribution Agreement.
+    * YOU MAY NOT DISTRIBUTE COPIES of this software, or copies of software derived from this software, to others outside your organization without specific prior written permission from the UCLA Laboratory of Neuro Imaging, except where noted for specific software products.
+    * You must not remove or alter any copyright or other proprietary notices in the software.
+    * Software has not been reviewed or approved by the Food and Drug Administration, and is for non-clinical, IRB-approved Research Use Only. In no event shall data or images generated through the use of the Software be used in the provision of patient care.
+    * THE SOFTWARE IS PROVIDED "AS IS," AND THE UNIVERSITY OF CALIFORNIA AND ITS COLLABORATORS DO NOT MAKE ANY WARRANTY, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, NOR DO THEY ASSUME ANY LIABILITY OR RESPONSIBILITY FOR THE USE OF THIS SOFTWARE.
+    * This software is for research purposes only and has not been approved for clinical use.
+    * You may publish papers and books using results produced using software provided by this site provided that you reference the appropriate citations. A list of citations is available here.
+    * You agree to comply with LONI's Trademark Usage Requirements, as modified from time to time, described in the "Use of Materials Limitations" section of the LONI Terms of Use Agreement. Except as expressly provided in this License, you are granted no rights in or to any LONI trademarks now or hereafter used or licensed by LONI.
+
+    * All Technology and technical data delivered under this Agreement are subject to US export control laws and may be subject to export or import regulations in other countries. You agree to comply strictly with all such laws and regulations and acknowledge that you have the responsibility to obtain such licenses to export, re-export, or import as may be required after delivery to you.</license>
+                                <uri>http://bishopw.loni.ucla.edu/AIR5/</uri>
+                                <metadata>
+                                        <data key="__creationDateKey" value="Mon Nov 09 17:13:56 PST 2009" />
+                                </metadata>
+                                <input id="SaveCommonAIRfiles_1.Nooffiles" name="No of files" required="true" enabled="true" order="1">
+                                        <format type="File" cardinality="-1">
+                                                <fileTypes>
+                                                        <filetype name="File" extension="" description="Any type of data file" />
+                                                </fileTypes>
+                                        </format>
+                                </input>
+                                <input id="SaveCommonAIRfiles_1.Start" name="Start" required="true" enabled="true" order="2">
+                                        <format type="Flow Control" cardinality="1" />
+                                </input>
+                                <output id="SaveCommonAIRfiles_1.OutputAIRfiles" name="Output AIR files" required="true" enabled="true" order="3">
+                                        <format type="File" cardinality="-2" cardinalityBase="No of files">
+                                                <fileTypes>
+                                                        <filetype name="AIR file" extension="air" description="AIR Linear transformation" />
+                                                </fileTypes>
+                                        </format>
+                                </output>
+                                <input id="SaveCommonAIRfiles_1.PerlScript" name="Perl Script" required="true" enabled="true" order="0" prefix="-w" prefixSpaced="true" prefixAllArgs="false">
+                                        <format type="File" cardinality="1">
+                                                <fileTypes>
+                                                        <filetype name="File" extension="" description="Any type of data file" />
+                                                </fileTypes>
+                                        </format>
+                                        <values>
+                                                <value>pipeline://cranium.loni.ucla.edu/csvarer/SAVE_COMMON.pl</value>
+                                        </values>
+                                </input>
+                        </module>
+                        <input link="AlignLinearwrapper_1.StandardVolume" id="AlignLinearReconcileandDefineCommon_1.StandardVolume" name="Standard Volume" order="0" />
+                        <input link="AlignLinearwrapper_1.ResliceVolume" id="AlignLinearReconcileandDefineCommon_1.ResliceVolume" name="Reslice Volume" order="1" />
+                        <input link="AIRreconcile_1.Usedtodeterminefilepath" id="AlignLinearReconcileandDefineCommon_1.Usedtodeterminefilepath" name="Used to determine file path" order="2" />
+                        <input link="SaveCommonAIRfiles_1.Nooffiles" id="AlignLinearReconcileandDefineCommon_1.Nooffiles" name="No of files" order="3" />
+                        <output link="SaveCommonAIRfiles_1.OutputAIRfiles" id="AlignLinearReconcileandDefineCommon_1.OutputAIRfiles" name="Output AIR files" order="4" />
+                        <metadata>
+                                <data key="__creationDateKey" value="Thu Nov 12 18:01:55 PST 2009" />
+                        </metadata>
+                </moduleGroup>
+                <module id="HardMean_1" name="Hard Mean" package="Minimum Distance Template" version="1.0" description="This program will average together a series of files." location="pipeline://cranium.loni.ucla.edu/bgutman/Ana_Average" sourceCode="" icon="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&#xA;4aN/91hkH6daKKK//9k=" posX="624" posY="609">
+                        <executableAuthors>
+                                <author fullName="Roger P. Woods" email="" website="" />
+                        </executableAuthors>
+                        <tag>averaging MRI</tag>
+                        <uri>http://pipeline.loni.ucla.edu/</uri>
+                        <metadata>
+                                <data key="__creationDateKey" value="Mon Sep 11 17:42:51 PDT 2006" />
+                        </metadata>
+                        <output id="HardMean_1.HardMean" name="Hard  Mean" description="Name of the average output file(s)" required="true" enabled="true" order="2">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <input id="HardMean_1.multiple" name="multiple" description="multiplicity of files to average (will correspond to number of outputs)" required="true" enabled="true" order="0">
+                                <format type="Number" cardinality="1" />
+                                <values>
+                                        <value>1</value>
+                                </values>
+                        </input>
+                        <input id="HardMean_1.InputFiles" name="Input Files" description="Name of the files to be averaged" required="true" enabled="true" order="1">
+                                <format type="File" cardinality="-1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                </module>
+                <dataModule id="Savecommonairfiles_1" name="Save common air files" posX="55" posY="787" type="File" source="false" loopIndex="false" dirDump="true">
+                        <fileTypes>
+                                <filetype name="File" extension="" description="Any type of data file" />
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Fri Nov 06 18:39:33 PST 2009" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu/{$tempdir}/{$username}/mdt/gtp_78_subjs/</value>
+                        </values>
+                        <input id="Savecommonairfiles_1.Input" name="Input" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="File" extension="" description="Any type of data file" />
+                                        </fileTypes>
+                                </format>
+                        </input>
+                </dataModule>
+                <dataModule id="ReslicedVolumestocommonspace_1" name="Resliced Volumes to common space" posX="346" posY="789" type="File" source="false" loopIndex="false" dirDump="false">
+                        <fileTypes>
+                                <filetype name="Analyze Image 3D" extension="img" description="Analyze Image 3D file">
+                                        <need>hdr</need>
+                                </filetype>
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Sun Nov 08 13:02:04 PST 2009" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-10036-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-10048-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-10065-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-10072-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-10086-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-10103-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-10169-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-10230-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-10239-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-10244-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-10343-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-10357-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-10374-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-6610-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-6753-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-6824-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-7373-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-7422-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-7464-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-7470-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-7555-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-7614-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-7618-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-7806-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-7807-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-7810-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8025-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8155-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8167-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8178-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8382-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8383-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8453-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8489-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8496-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8518-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8543-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8593-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8595-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8798-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8855-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8857-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8871-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8883-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8897-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8940-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8982-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8985-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-8993-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9035-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9080-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9083-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9176-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9185-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9197-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9215-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9233-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9251-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9264-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9268-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9292-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9295-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9350-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9449-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9465-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9470-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9522-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9647-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9666-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9746-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9752-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9764-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9780-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9884-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9894-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9929-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9960-T1_flipped.img</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/mdt_78_subjs/resliced-9989-T1_flipped.img</value>
+                        </values>
+                        <input id="ReslicedVolumestocommonspace_1.Input" name="Input" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image 3D" extension="img" description="Analyze Image 3D file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                </dataModule>
+                <dataModule id="Meanimage_1" name="Mean image" posX="758" posY="797" type="File" source="false" loopIndex="false" dirDump="true">
+                        <fileTypes>
+                                <filetype name="Analyze Image 3D" extension="img" description="Analyze Image 3D file">
+                                        <need>hdr</need>
+                                </filetype>
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Tue Nov 10 09:55:39 PST 2009" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu/{$tempdir}/{$username}/mdt/gtp_78_subjs/</value>
+                        </values>
+                        <input id="Meanimage_1.Input" name="Input" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image 3D" extension="img" description="Analyze Image 3D file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                </dataModule>
+                <module id="BiasFieldCorrector_1" name="Bias Field Corrector" package="BrainSuite11a" version="11a" description="Bias Field Corrector: Computes local estimates of gain variation in the iimage using an adaptive partial volume tissue model. Uses the estimates to compute a tri-cubic B-spline. Corrects the extracted barin image using values of the spline&#xA;&#xA;" location="pipeline://cranium.loni.ucla.edu/bfc11a_x86_64-redhat-linux-gnu" sourceCode="" icon="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&#xA;iuHooorhIPJaKKK//9k=" posX="11" posY="88" executableVersion="11a">
+                        <authors>
+                                <author fullName="Alen Zamanyan" email="" website="" />
+                                <author fullName="Sam Hobel" email="" website="" />
+                                <author fullName="Alex Genco" email="" website="" />
+                        </authors>
+                        <executableAuthors>
+                                <author fullName="David Shattuck" email="" website="" />
+                        </executableAuthors>
+                        <citations>
+                                <citation>Shattuck DW, Sandor-Leahy SR, Schaper KA, Rottenberg DA, and Leahy RM, (2001) "Magnetic Resonance Image Tissue Classification Using a Partial Volume Model", Neuroimage 13(5):856-876
+PMID: 11304082</citation>
+                        </citations>
+                        <license>http://www.loni.ucla.edu/Software/license.php
+
+By registering for downloads from the UCLA Laboratory of Neuro Imaging, you are agreeing to the following terms and conditions as well as to the Terms of Use of the LONI website. To view the LONI website's Terms of Use go to, http://www.loni.ucla.edu/software/termsofuse.php.
+
+    * Permission is granted to use this software without charge for non-commercial research purposes only.
+    * Other than the rights granted herein, LONI retains all rights, title, and interest in LONI software and Technology, and You retain all rights, title, and interest in Your Modifications and associated specifications, subject to the terms of this License.
+    * You may make verbatim copies of this software for personal use, or for use within your organization, provided that you duplicate all of the original copyright notices and associated disclaimers. If you provide the use of the software to other users within your organization, they also must comply with all the terms of this Software Distribution Agreement.
+    * YOU MAY NOT DISTRIBUTE COPIES of this software, or copies of software derived from this software, to others outside your organization without specific prior written permission from the UCLA Laboratory of Neuro Imaging, except where noted for specific software products.
+    * You must not remove or alter any copyright or other proprietary notices in the software.
+    * Software has not been reviewed or approved by the Food and Drug Administration, and is for non-clinical, IRB-approved Research Use Only. In no event shall data or images generated through the use of the Software be used in the provision of patient care.
+    * THE SOFTWARE IS PROVIDED "AS IS," AND THE UNIVERSITY OF CALIFORNIA AND ITS COLLABORATORS DO NOT MAKE ANY WARRANTY, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE, NOR DO THEY ASSUME ANY LIABILITY OR RESPONSIBILITY FOR THE USE OF THIS SOFTWARE.
+    * This software is for research purposes only and has not been approved for clinical use.
+    * You may publish papers and books using results produced using software provided by this site provided that you reference the appropriate citations. A list of citations is available here.
+    * You agree to comply with LONI's Trademark Usage Requirements, as modified from time to time, described in the "Use of Materials Limitations" section of the LONI Terms of Use Agreement. Except as expressly provided in this License, you are granted no rights in or to any LONI trademarks now or hereafter used or licensed by LONI.
+    * All Technology and technical data delivered under this Agreement are subject to US export control laws and may be subject to export or import regulations in other countries. You agree to comply strictly with all such laws and regulations and acknowledge that you have the responsibility to obtain such licenses to export, re-export, or import as may be required after delivery to you.</license>
+                        <tag>bias field correction</tag>
+                        <tag>inhomogeneity correction</tag>
+                        <uri>http://www.loni.ucla.edu/~shattuck</uri>
+                        <metadata>
+                                <data key="__creationDateKey" value="Mon May 16 11:53:37 PDT 2011" />
+                        </metadata>
+                        <input id="BiasFieldCorrector_1.InputFile" name="Input File" description="The filename of the input MRI file in Analyze format." required="true" enabled="true" order="0" prefix="-i" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <output id="BiasFieldCorrector_1.OutputFile" name="Output File" description="The filename for the corrected file." required="true" enabled="true" order="1" prefix="-o" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image" extension="img" description="Analyze Image file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <input id="BiasFieldCorrector_1.MaskFile" name="Mask File" description="mask the input image with the file &lt;maskfile&gt;" required="false" enabled="false" order="2" prefix="-m" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Image 3D" extension="img" description="Analyze Image 3D file">
+                                                        <need>hdr</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <input id="BiasFieldCorrector_1.HistogramRadius" name="Histogram Radius" description="histogram radius (voxels) [default: 12]" required="false" enabled="false" order="5" prefix="-r" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <input id="BiasFieldCorrector_1.BiasSampleSpacing" name="Bias Sample Spacing" description="bias sample spacing (voxels) [default: 16]" required="false" enabled="false" order="6" prefix="-s" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <input id="BiasFieldCorrector_1.ControlPointSpacing" name="Control Point Spacing" description="control point spacing (voxels) [default: 64]" required="false" enabled="false" order="7" prefix="-c" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <input id="BiasFieldCorrector_1.SplineStiffnessWeighting" name="Spline Stiffness Weighting" description="spline stiffness weighting parameter [default: 1e-04]" required="false" enabled="false" order="8" prefix="-w" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <input id="BiasFieldCorrector_1.Minimumallowedbiasestimate" name="Minimum allowed bias estimate" description="Minimum allowed bias value (default 0.9)" required="false" enabled="false" order="13" prefix="-L" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <input id="BiasFieldCorrector_1.Maximumallowedbiasestimate" name="Maximum allowed bias estimate" description="maximum allowed bias estimate (default 1.1)" required="false" enabled="false" order="14" prefix="-U" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <output id="BiasFieldCorrector_1.MaskedBiasOutput" name="Masked Bias Output" description="specify masked bias field estimate output path" required="false" enabled="false" order="4" prefix="--maskedbias" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="File" extension="" description="Any type of data file" />
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <input id="BiasFieldCorrector_1.Ellipse" name="Ellipse" description="use ellipsoid for ROI histogram" required="false" enabled="false" order="9" prefix="--ellipse" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="String" cardinality="0" />
+                        </input>
+                        <input id="BiasFieldCorrector_1.Block" name="Block" description="Use block for ROI histogram" required="false" enabled="false" order="10" prefix="--block" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="String" cardinality="0" />
+                        </input>
+                        <input id="BiasFieldCorrector_1.IterativeMode" name="Iterative Mode" description="iterative mode (overrides all other settings)" required="false" enabled="false" order="11" prefix="--iterate" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="String" cardinality="0" />
+                        </input>
+                        <input id="BiasFieldCorrector_1.ApplyCorrectionField" name="Apply Correction Field" description="apply correction field to entire volume" required="false" enabled="false" order="12" prefix="--extrapolate" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="String" cardinality="0" />
+                        </input>
+                        <input id="BiasFieldCorrector_1.SmallBiasModel" name="Small Bias Model" description="small bias model [0.95,1.05]" required="false" enabled="false" order="15" prefix="--low" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <input id="BiasFieldCorrector_1.MediumBiasModel" name="Medium Bias Model" description="medium bias model [0.90,1.10]" required="false" enabled="false" order="16" prefix="--medium" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <input id="BiasFieldCorrector_1.HighBiasModel" name="High Bias Model" description="high bias model [0.80,1.20]" required="false" enabled="false" order="17" prefix="--high" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                        <input id="BiasFieldCorrector_1.Verbosity" name="Verbosity" description="verbosity level (0=silent) [default: 1]" required="false" enabled="false" order="19" prefix="-v" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Enumerated" cardinality="1">
+                                        <enumeration>0</enumeration>
+                                        <enumeration>1</enumeration>
+                                </format>
+                                <values>
+                                        <value>1</value>
+                                </values>
+                        </input>
+                        <input id="BiasFieldCorrector_1.ShowTiming" name="Show Timing" description="Display timing information" required="false" enabled="false" order="20" prefix="--timer" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="String" cardinality="0" />
+                        </input>
+                        <output id="BiasFieldCorrector_1.BiasOutput" name="Bias Output" description="save bias field estimate" required="false" enabled="false" order="3" prefix="--bias" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="File" extension="" description="Any type of data file" />
+                                        </fileTypes>
+                                </format>
+                        </output>
+                        <input id="BiasFieldCorrector_1.BiasEstimateConvergencethreshold" name="Bias Estimate Convergence threshold" description="bias estimate convergence threshold. (values &gt; 0.1 disable) [default: 0]&#xA;" required="false" enabled="false" order="18" prefix="--beps bias_epsilon" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="Number" cardinality="1" />
+                        </input>
+                </module>
+                <metadata>
+                        <data key="__creationDateKey" value="Wed Feb 03 09:31:49 PST 2010" />
+                </metadata>
+        </moduleGroup>
+</pipeline>
+

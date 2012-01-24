@@ -1,1 +1,1 @@
-tile /var/www/ADRC/TRAINING_SLIDES/AGD-7.ndpi /SSD/TILE_CACHE/AGD-7 4096 40
+tile /var/www/ADRC/TRAINING_SLIDES/MSA-5.ndpi /home/dgutman/TILE_CACHE/MSA-5 4096 40

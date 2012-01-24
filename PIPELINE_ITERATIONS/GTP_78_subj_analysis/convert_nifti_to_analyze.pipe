@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pipeline version=".1">
+        <connections>
+                <connection source="smartline_NIFTI_SUBJECT_BASE_DIR_ANALYZEDATASINKforGTP_1.smartlineoutput" sink="ANALYZEDATASINKforGTP_1.Input" />
+                <connection source="NIFTI_SUBJECT_BASE_DIR_1.Output" sink="smartline_NIFTI_SUBJECT_BASE_DIR_ANALYZEDATASINKforGTP_1.smartlineinput" />
+        </connections>
+        <moduleGroup id="convert_nifti_to_analyze_1" name="convert_nifti_to_analyze" posX="0" posY="0">
+                <dataModule id="NIFTI_SUBJECT_BASE_DIR_1" name="NIFTI_SUBJECT_BASE_DIR" posX="246" posY="86" type="File" source="true" loopIndex="false">
+                        <fileTypes>
+                                <filetype name="File" extension="" description="Any type of data file" />
+                                <filetype name="NIFTI GZ" extension="nii.gz" description="Gzipped NIFTI file." />
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Sat Jan 14 22:00:09 EST 2012" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/10036-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/10048-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/10065-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/10072-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/10086-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/10103-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/10169-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/10230-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/10239-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/10244-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/10343-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/10357-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/10374-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/6610-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/6753-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/6824-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/7373-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/7422-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/7464-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/7470-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/7555-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/7614-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/7618-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/7806-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/7807-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/7810-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8025-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8155-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8167-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8178-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8382-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8383-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8453-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8489-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8496-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8518-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8543-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8593-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8595-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8798-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8855-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8857-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8871-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8883-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8897-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8940-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8982-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8985-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/8993-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9035-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9080-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9083-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9176-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9185-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9197-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9215-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9233-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9251-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9264-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9268-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9292-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9295-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9350-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9449-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9465-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9470-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9522-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9647-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9666-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9746-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9752-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9764-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9780-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9884-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9894-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9929-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9960-T1_flipped.nii.gz</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/NIFTI/9989-T1_flipped.nii.gz</value>
+                        </values>
+                        <output id="NIFTI_SUBJECT_BASE_DIR_1.Output" name="Output" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="File" extension="" description="Any type of data file" />
+                                                <filetype name="NIFTI GZ" extension="nii.gz" description="Gzipped NIFTI file." />
+                                        </fileTypes>
+                                </format>
+                        </output>
+                </dataModule>
+                <dataModule id="ANALYZEDATASINKforGTP_1" name="ANALYZE DATA SINK for GTP" posX="167" posY="259" type="File" source="false" loopIndex="false" dirDump="false">
+                        <fileTypes>
+                                <filetype name="Analyze Header" extension="hdr" description="Analyze Header file">
+                                        <need>img</need>
+                                </filetype>
+                        </fileTypes>
+                        <metadata>
+                                <data key="__creationDateKey" value="Sat Jan 14 22:03:47 EST 2012" />
+                        </metadata>
+                        <values>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10036-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10048-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10065-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10072-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10086-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10103-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10169-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10230-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10239-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10244-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10343-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10357-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/10374-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/6610-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/6753-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/6824-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7373-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7422-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7464-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7470-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7555-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7614-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7618-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7806-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7807-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/7810-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8025-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8155-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8167-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8178-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8382-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8383-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8453-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8489-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8496-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8518-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8543-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8593-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8595-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8798-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8855-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8857-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8871-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8883-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8897-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8940-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8982-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8985-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/8993-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9035-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9080-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9083-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9176-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9185-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9197-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9215-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9233-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9251-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9264-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9268-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9292-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9295-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9350-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9449-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9465-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9470-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9522-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9647-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9666-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9746-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9752-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9764-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9780-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9884-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9894-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9929-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9960-T1_flipped.hdr</value>
+                                <value>pipeline://cranium.loni.ucla.edu//ifs/tmp/dgutman/GTP_78_SUBJ_IMAGES/ANALYZE/9989-T1_flipped.hdr</value>
+                        </values>
+                        <input id="ANALYZEDATASINKforGTP_1.Input" name="Input" required="true" enabled="true" order="-1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Header" extension="hdr" description="Analyze Header file">
+                                                        <need>img</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </input>
+                </dataModule>
+                <module name="smartline_NIFTI_SUBJECT_BASE_DIR_ANALYZE DATA SINK for GTP" description="Smartline conversion from type (*) (nii.gz) of module NIFTI_SUBJECT_BASE_DIR to type (hdr,img) of module ANALYZE DATA SINK for GTP" location="pipeline://cranium.loni.ucla.edu/java" id="smartline_NIFTI_SUBJECT_BASE_DIR_ANALYZEDATASINKforGTP_1" package="Pipeline Utilities" posX="224" posY="189" rotation="0" smartModule="true" gridVariables="h_vmem=4">
+                        <input id="smartline_NIFTI_SUBJECT_BASE_DIR_ANALYZEDATASINKforGTP_1.jarfile" name="jar file" required="false" enabled="true" predefined="true" order="0" prefix="-Djava.awt.headless=true -Xmx2500m -jar" prefixSpaced="true" prefixAllArgs="false">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="JAR" extension="jar" description="Sun JAR file" />
+                                        </fileTypes>
+                                </format>
+                                <values>
+                                        <value>pipeline://cranium.loni.ucla.edu/smartline/Smartline.jar</value>
+                                </values>
+                        </input>
+                        <input id="smartline_NIFTI_SUBJECT_BASE_DIR_ANALYZEDATASINKforGTP_1.smartlineinput" name="smartline input" required="false" enabled="true" order="1">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="File" extension="" description="Any type of data file" />
+                                                <filetype name="NIFTI GZ" extension="nii.gz" description="Gzipped NIFTI file." />
+                                        </fileTypes>
+                                </format>
+                        </input>
+                        <input id="smartline_NIFTI_SUBJECT_BASE_DIR_ANALYZEDATASINKforGTP_1.softwarename" name="software name" required="false" enabled="true" predefined="true" order="2">
+                                <format type="String" cardinality="1" />
+                                <values>
+                                        <value>General</value>
+                                </values>
+                        </input>
+                        <output id="smartline_NIFTI_SUBJECT_BASE_DIR_ANALYZEDATASINKforGTP_1.smartlineoutput" name="smartline output" required="false" enabled="true" order="3">
+                                <format type="File" cardinality="1">
+                                        <fileTypes>
+                                                <filetype name="Analyze Header" extension="hdr" description="Analyze Header file">
+                                                        <need>img</need>
+                                                </filetype>
+                                        </fileTypes>
+                                </format>
+                        </output>
+                </module>
+        </moduleGroup>
+</pipeline>
+
