@@ -1,9 +1,10 @@
 #!/usr/bin/perl
 use File::Basename;
-$tile_dir_location = "/home/dgutman/NDPI_DEMO/";
+$tile_dir_location = "/data3/TILE_CACHE/ADRC/TRAINING_SLIDES/";
 
-$big_tif_output = "/IMAGING_SCRATCH/BIG_TIFF_IMAGES/";
-$vips_pyramid_output = "/IMAGING_SCRATCH/PYRAMIDS/";
+
+$big_tif_output = "/data3/BIG_TIFF_IMAGES/";
+$vips_pyramid_output = "/data3/PYRAMIDS/ADRC/TRAINING_SLIDES/";
 
 
 
@@ -81,7 +82,7 @@ else
 	{
 
 	printf FP_OUT "rename -v 's/ndpi-(\\d+)-(\\d+)/ndpi.\$1.\$2/'  ${dir_to_check}/*.tif \n "; 
-	printf FP_OUT "/home/dgutman/Dropbox/GIT_ROOT/NDPI_CONVERSION/BuildSlide_dg ${dir_to_check}/ $big_tif_output$TILE_ROOT.tif -lzw \n";
+	printf FP_OUT "/data/dgutman/Dropbox/GIT_ROOT/NDPI_CONVERSION/BuildSlide_node15 ${dir_to_check}/ $big_tif_output$TILE_ROOT.tif -lzw \n";
 	}
 
 

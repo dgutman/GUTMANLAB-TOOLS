@@ -3,7 +3,7 @@ use File::Basename;
 
 
 #$WORKING_DIRECTORY = "/home/dgutman/BITC_MIRROR/MAYBERG_DATA/mayberg/PSYCHIATRY-MAYBERGCIDAR_MAY_2010/";
-$WORKING_DIRECTORY = "/drobo/TCGA_IMAGE_MIRROR/XNAT_MAYBERG_R01/";
+$WORKING_DIRECTORY = "/drobo/TCGA_IMAGE_MIRROR/CANCER_ARCHIVE_DCM_DATA/TCGA-BRCA/";
 
 
 if(!open(FP_DCM_ERRORS,">>dicom_Error_log.txt" ))
@@ -25,14 +25,16 @@ if(! -d $ZIP_TARGET) { `mkdir -p $ZIP_TARGET`;}
 
 @DIRS_TO_ZIP  = glob("${WORKING_DIRECTORY}*");
 
+
+
 foreach $CURRENT_DIR ( @DIRS_TO_ZIP )
 	{
 	if( -d $CURRENT_DIR)
 		{
-#		print $CURRENT_DIR;
+		print $CURRENT_DIR;
 		($file,$dir) = fileparse($CURRENT_DIR);
 # R01R01031
-		if($file =~ m/(R01\d\d\d)/)
+		if($file =~ m/TCGA-(..)-(....)/)
 			{
 		print $file . " is current file for $1\n";
 		
